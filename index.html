@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Uber - Soduku</title>
+    <style>
+
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      }
+
+      table {
+        margin: auto;
+        border-spacing: 0;
+      }
+
+      #soduku-board input {
+        height: 30px;
+        width: 30px;
+        border: none;
+        text-align: center;
+        font-size: 1.5em;
+      }
+
+      /* Horizontal borders */
+
+      tr:nth-child(3n+1) > td {
+        border-top: 2px solid black;
+        border-bottom: 1px solid gray;
+      }
+
+      tr:nth-child(3n+2) > td {
+        border-bottom: 1px solid gray;
+      } 
+
+      tr:last-child > td { 
+        border-bottom: 2px solid black;
+      }
+
+      /* vertical borders */
+
+      td:nth-child(3n+1) {
+        border-left: 2px solid black;
+        border-right: 1px solid gray;
+      }
+
+      td:nth-child(3n+2) {
+        border-right: 1px solid gray;
+      }
+
+      td:last-child {
+        border-right: 2px solid black;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <table id="soduku-board">
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+        <td><input type="number" min="1" max="9"></td>
+      </tr>
+
+    </table>
+  </body>
+</html>
