@@ -10,17 +10,132 @@
         margin: 0; 
       }
 
+      body {
+        margin: 0;
+      }
+
+      header {
+        width: 100%;
+        height: 50px;
+        background-color: rgb(24,24,24);
+        color: rgb(240,240,240);
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
+      main {
+        background-color: rgb(200,200,200);
+        /*width: 80%;*/
+        width: 960px;
+        height: 720px;
+        margin: 20px auto 20px auto;
+
+      }
+
+      article {
+        float: left;
+        width: 25%;
+        background-color: blue;
+      }
+
+      article p {
+        margin: 0;
+      }
+
+      .difficulty-display,
+      .timer,
+      .hint,
+      .medium-toggle {
+        /*width: 100%;*/
+        background-color: gray;
+        margin-bottom: 10px;
+      }
+
+      .hint button {
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        background-color: purple;
+      }
+
+      input[type="checkbox"].toggle,
+      input[type="radio"].toggle-select {
+         position: absolute;
+         top: -9999px;
+         left: -9999px;
+      }
+
+      label, button { 
+/*        -webkit-appearance: push-button;
+        -moz-appearance: button; */
+        cursor: pointer;
+        height: 40px;
+      }
+
+      input[type="checkbox"].toggle + label {
+        display: block;
+        background-color: green;
+        border-bottom: 10px solid rgb(0,100,0);
+      }
+
+      input[type="checkbox"].toggle:checked + label {
+        background-color: red;
+        border-bottom: 10px solid rgb(100,0,0);
+
+      }
+
+      input[type="radio"].toggle-select + label {
+        float: left;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 50%;
+        background-color: rgb(200,200,200);
+        border: 1px solid purple;
+      }
+
+      input[type="radio"].toggle-select-left:checked + label {
+        background-color: rgb(100,100,100);
+      }
+
+      input[type="radio"].toggle-select-right:checked + label {
+        background-color: rgb(100,100,100);
+      }
+
+
+
+
+      /* Default State */
+/*      div {
+         background: green;
+         width: 400px;
+         height: 100px;
+         line-height: 100px;
+         color: white;
+         text-align: center;
+      }*/
+
+/* Toggled State */
+input[type=checkbox]:checked ~ div {
+   background: red;
+}
+
       table {
-        margin: auto;
+        -webkit-box-sizing: border-box;
+        width: 74%;
+        height: 100%;
+        margin-right: 1%;
+        float: left;
         border-spacing: 0;
       }
 
       #soduku-board input {
-        height: 30px;
-        width: 30px;
+        height: 100%;
+        width: 100%;
         border: none;
         text-align: center;
-        font-size: 1.5em;
+        font-size: 2em;
       }
 
       /* Horizontal borders */
@@ -53,112 +168,264 @@
         border-right: 2px solid black;
       }
 
+      .pen {
+        color: blue;
+      }
+
+      .pencil {
+
+      }
+
+      .group:before,
+      .group:after {
+          content: "";
+          display: table;
+      } 
+      .group:after {
+          clear: both;
+      }
+      .group {
+          zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+      }
+
 
     </style>
   </head>
 
   <body>
-    <table id="soduku-board">
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
-      <tr>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-        <td><input type="number" min="1" max="9"></td>
-      </tr>
 
+    <header>
+      <h1>Sudoku Times</h1>
+    </header>
+
+    <main>
+    <table id="soduku-board">
+      <tbody>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="1,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="1,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="1,3"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,3"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,3"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="1,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="1,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="1,6"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,6"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,6"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="1,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="1,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="1,9"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="2,9"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="3,9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="4,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="4,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="4,3"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,3"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,3"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="4,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="4,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="4,6"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,6"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,6"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="4,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="4,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="4,9"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="5,9"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="6,9"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="7,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="7,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="7,3"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,3"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,1"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,2"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,3"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="7,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="7,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="7,6"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,6"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,4"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,5"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,6"></td>
+      </tr>
+      <tr>
+        <td><input type="number" min="1" max="9" data-cell="7,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="7,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="7,9"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="8,9"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,7"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,8"></td>
+        <td><input type="number" min="1" max="9" data-cell="9,9"></td>
+      </tr>
+    </tbody>
     </table>
+
+    <article>
+      <div class="difficulty-display">
+        <p>Difficulty:</p>
+        <p><span>Easy</span></p>
+      </div>
+
+      <div class="timer">
+        <p>Timer:</p>
+        <p><span class="time-passed">2:07</span></p>
+        <input type="checkbox" class="toggle" id="timer-start" value="start">
+        <label for="timer-start">Start</label>
+      </div>
+
+      <div class="medium-toggle group">
+        <input type="radio" id="medium-option1" class="toggle-select toggle-select-left" name="medium" value="pen" checked>
+        <label for="medium-option1">Pen</label>
+        <input type="radio" id="medium-option2" class="toggle-select toggle-select-right" name="medium" value="pencil">
+        <label for="medium-option2">Pencil</label>
+      </div>
+
+      <div class="hint">
+        <button>Show hint</button> 
+      </div>
+    </article>
+    </main>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+
+      $("#soduku-board").on("change", function(e){
+        console.log("cell value changed...");
+        var newCellValue = $(e.target).val();
+        console.log(e.target.dataset.cell);
+        //validate value of cell 
+        // try {
+        //   board.updateCell()){
+        //   if(board.isComplete()){
+        //     //notify play of win or lose
+        //   }
+        // }
+        // catch(error){
+        //   //notify player of invalid entry
+        // }
+          
+      });
+
+      function drawBoard(board){
+        $("td > input").each(function(index, cell){
+          // var value = $(this).attr("data-cell").split(",")[1];
+          // console.log(board);
+          var rowIndex = Math.floor((index)/9);
+          var colIndex = (index)%9 ;
+          // console.log(rowIndex + ", " + colIndex);
+          // console.log(board[rowIndex][colIndex]);
+          var value = board[rowIndex][colIndex];
+          var disabled = Math.round(Math.random()) === 1 ? true : false; 
+          
+          if(!disabled){
+            $(this).addClass("pen");
+          }
+
+          $(this).val(value);
+          $(this).attr("disabled", disabled);
+        });
+      }
+
+      // Soduku understands the rules for the game of soduku
+
+      function SodukuGame() {
+        this.board = undefined;
+        this.solution = this.generate();
+      }
+
+      SodukuGame.prototype.generate = function(){
+        var solution = [
+          [7, 2, 3, 4, 5, 1, 9, 6, 8],
+          [8, 5, 1, 9, 6, 3, 4, 2, 7],
+          [4, 6, 9, 8, 2, 7, 1, 5, 3],
+          [3, 1, 6, 2, 4, 8, 5, 7, 9],
+          [2, 8, 7, 1, 9, 5, 6, 3, 4],
+          [9, 4, 5, 3, 7, 6, 2, 8, 1],
+          [1, 7, 2, 6, 8, 9, 3, 4, 5],
+          [6, 9, 8, 5, 3, 4, 7, 1, 2],
+          [5, 3, 4, 7, 1, 2, 8, 9, 6]
+        ];
+        // this.solution = {
+        //   A1: 7, A2: 2, A3: 3, A4: 4, A5: 5, A6: 1, A7: 9, A8: 6, A9: 8,
+        //   B1: 8, B2: 5, B3: 1, B4: 9, B5: 6, B6: 3, B7: 4, B8: 2, B9: 7,
+        //   C1: 4, C2: 6, C3: 9, C4: 8, C5: 2, C6: 7, C7: 1, C8: 5, C9: 3,
+        //   D1: 3, D2: 1, D3: 6, D4: 2, D5: 4, D6: 8, D7: 5, D8: 7, D9: 9,
+        //   E1: 2, E2: 8, D3: 7, E4: 1, E5: 9, E6: 5, E7: 6, E8: 3, E9: 4,
+        //   F1: 9, F2: 4, F3: 5, F4: 3, F5: 7, F6: 6, F7: 2, F8: 8, F9: 1,
+        //   G1: 1, G2: 7, G3: 2, G4: 6, G5: 8, G6: 9, G7: 3, G8: 4, G9: 5,
+        //   H1: 6, H2: 9, H3: 8, H4: 5, H5: 3, H6: 4, H7: 7, H8: 1, H9: 2,
+        //   I1: 5, I2: 3, I3: 4, I4: 7, I5: 1, I6: 2, I7: 8, I8: 9, I9: 6
+        // }
+
+        //this.solution = "723451968851963427469827153316248579287195634945376281172689345698534712896"
+        return solution;
+      }
+
+      SodukuGame.prototype.newGame = function(difficulty){
+
+        this.solution = this.generate();
+
+        return this.solution;
+      };
+      SodukuGame.prototype.isWinner = function(){};
+      SodukuGame.prototype.resumeGame = function(){};
+
+      // Board understands the state of a sudoku game
+      
+      function SudokuBoard(domBoard) {
+        this.id = domBoard;
+        this.cells = {};
+      }
+
+      SudokuBoard.prototype.isComplete = function(){};
+      SudokuBoard.prototype.updateCell = function(){};
+
+      var board = new SudokuBoard();
+      // drawBoard([]);
+
+    </script>
   </body>
 </html>
