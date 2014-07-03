@@ -47,15 +47,15 @@
         background-color: rgb(200,200,200);
         /*width: 80%;*/
         width: 960px;
-        height: 720px;
-        margin: 20px auto 20px auto;
+        /*height: 720px;*/
+        margin: 2% auto 0 auto;
 
       }
 
       section {
         float: left;
         width: 25%;
-        background-color: blue;
+        /*background-color: blue;*/
       }
 
       #game-details,
@@ -72,10 +72,15 @@
       .hint,
       .medium-toggle {
         /*width: 100%;*/
-        padding: 10px;
-        background-color: gray;
+        background-color: rgba(255,255,255,0.4);
         margin-bottom: 10px;
       }
+
+      .difficulty-display,
+      .timer-display {
+          padding: 10px 0;
+      }
+
 
       .difficulty-display span,
       .timer span {
@@ -102,6 +107,13 @@
       label, button { 
         cursor: pointer;
         height: 40px;
+      }
+
+      .timer label {
+        background-image: url("./icon_282/icon_282.png");
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        background-position: 95%;
       }
 
       input[type="checkbox"].toggle + label {
@@ -151,13 +163,10 @@
       }
 
       #puzzle {
-        position: relative;
-        height: 0;
         width: 74%;
-        padding-bottom: 74%;
         margin-right: 1%;
         float: left;
-        -webkit-box-sizing: padding-box;
+        /*background-color: pink;*/
       }
 
       table {
@@ -238,12 +247,10 @@
           width: 90%;
         }
 
-        table {
+        #puzzle {
           width: 90%;
-          height: 80%;
           margin-right: 0;
           float: none;
-          border-spacing: 0;
           margin: auto;
         }
 
@@ -267,6 +274,16 @@
           float: right;
           width: 46%;
           padding: 2%;
+        }
+
+        .timer-display {
+          width: 75%;
+          float: left;
+        }
+
+        .timer label {
+          width: 25%;
+          float: right;
         }
 
       }
@@ -293,14 +310,16 @@
         </div>
 
         <div class="timer">
-          <p>Timer:</p>
-          <p><span class="time-passed">2:07</span></p>
+          <div class="timer-display">
+            <p>Timer:</p>
+            <p><span class="time-passed">2:07</span></p>
+          </div>
           <input type="checkbox" class="toggle" id="timer-start" value="start">
           <label for="timer-start">Start</label>
         </div>
       </section>
 
-      <section id="puzzle">
+      <section id="puzzle" class="group">
     <table id="soduku-board">
       <tbody>
       <tr>
@@ -423,7 +442,16 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
 
-      $("#soduku-board").on("change", function(e){
+      var sudokuBoard = $("#soduku-board");
+
+      var maintainAspectRatio = function(){
+        sudokuBoard.css("height", sudokuBoard.width());
+      }
+
+      $(document).on("load", maintainAspectRatio());
+      $(window).resize(maintainAspectRatio);
+
+      sudokuBoard.on("change", function(e){
         console.log("cell value changed...");
         var newCellValue = $(e.target).val();
         console.log(e.target.dataset.cell);
