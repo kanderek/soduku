@@ -159,6 +159,8 @@
     <script>
 
       var sudokuBoard = $("#soduku-board");
+      var sudoku = new SudokuGame("easy");
+      var puzzle;
       var timer = new Timer("#timer-1 .time-passed");
       var medium = "pen";
 
@@ -169,6 +171,7 @@
       $(document).on("load", (function(){
         //initializing function calls
         maintainAspectRatio();
+        drawPuzzleDom(sudoku.puzzle);
       })());
       
       $(window).resize(maintainAspectRatio);
@@ -188,7 +191,8 @@
 
       sudokuBoard.on("click", function(event){
         var target = event.target ? event.target : event.srcElement;
-        if(!target.className){
+        console.log(target.disabled);
+        if(!target.className && !target.disabled){
           $(target).removeClass().addClass(medium);
         }
       });
@@ -215,17 +219,21 @@
 
       // END event handlers
 
-      function initPuzzleDom(puzzle){
+      function drawPuzzleDom(puzzle){
         $("td > input").each(function(index, cell){
           // var value = $(this).attr("data-cell").split(",")[1];
           // console.log(board);
           var rowIndex = Math.floor((index)/9);
           var colIndex = (index)%9 ;
+          var disabled = true;
           // console.log(rowIndex + ", " + colIndex);
           // console.log(board[rowIndex][colIndex]);
           var value = puzzle[rowIndex][colIndex];
-          var disabled = Math.round(Math.random()) === 1 ? true : false; 
-          
+          if(value === 0){
+            disabled = false;
+            value = " ";
+          }
+
           $(this).val(value);
           $(this).attr("disabled", disabled);
         });

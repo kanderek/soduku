@@ -1,9 +1,10 @@
 // Soduku understands the rules for the game of soduku
 
-function SudokuGame() {
-  this.board = undefined;
-  this.solution = this.generatePuzzle();
+function SudokuGame(difficulty) {
   this.DIFFICULTY = {easy: 50, medium: 40, hard: 30};
+  this.solution = this.generatePuzzle();
+  this.puzzle = this.initializePuzzle(difficulty);
+  this.playersGrid = this.copyPuzzle(this.puzzle);
 }
 
 SudokuGame.prototype.generatePuzzle = function(){
@@ -43,13 +44,32 @@ SudokuGame.prototype.initializePuzzle = function(difficulty){
   var puzzle = [];
 
   for(i=0; i < rows; i++){
+    puzzle.push([]);
     for(j=0; j < columns; j++){
-      if(Math.random() < numberOfBlanks/81){
-        puzzle[i][j] = solution[i][j];
+      if(Math.random()*100 < numberOfBlanks/81*100){
+        puzzle[i].push(this.solution[i][j]);
+      }
+      else{
+        puzzle[i].push(0);
       }
     }
   }
   return puzzle;
+}
+
+SudokuGame.prototype.copyPuzzle = function(puzzle){
+  var i, j;
+  var rows = puzzle.length;
+  var columns = puzzle[0].length;
+  var copy = [];
+
+  for(i=0; i < rows; i++){
+    copy.push([]);
+    for(j=0; j < columns; j++){
+        copy[i].push(puzzle[i][j]);
+    }
+  }
+  return copy;
 }
 
 SudokuGame.prototype.newGame = function(difficulty){
@@ -60,6 +80,27 @@ SudokuGame.prototype.newGame = function(difficulty){
 };
 SudokuGame.prototype.isWinner = function(){};
 SudokuGame.prototype.resumeGame = function(){};
+SudokuGame.prototype.print = function(grid){
+
+  var i, j;
+  var rows = grid.length;
+  var columns = grid[0].length;
+  var printable = "";
+
+  for(i=0; i < rows; i++){
+    if(i%3 === 0){
+      printable += "- - - - - - - - - - - - \n";
+    }
+    for(j=0; j < columns; j++){
+      if((j)%3 === 0 ){
+        printable += "| "
+      }
+      printable += grid[i][j] + " ";
+    }
+    printable += "\n";
+  }
+  console.log(printable);
+};
 
 // Board understands the state of a sudoku game
 
