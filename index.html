@@ -3,293 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Uber - Soduku</title>
-    <style>
-
-      input[type=number]::-webkit-inner-spin-button, 
-      input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
-        margin: 0; 
-      }
-
-      body {
-        margin: 0;
-      }
-
-      header {
-        width: 100%;
-        height: 50px;
-        background-color: rgb(24,24,24);
-        color: rgb(240,240,240);
-      }
-
-      .headline {
-        margin: auto;
-        height: 100%;
-        width: 960px;
-      }
-
-      .headline > h1 {
-        display: inline-block;
-        position: relative;
-        bottom: -10px;
-      }
-
-      .headline > button {
-        display: inline-block;
-        float: right;
-      }
-
-      header h1 {
-        margin: 0;
-      }
-
-      main {
-        background-color: rgb(200,200,200);
-        /*width: 80%;*/
-        width: 960px;
-        /*height: 720px;*/
-        margin: 2% auto 0 auto;
-
-      }
-
-      section {
-        float: left;
-        width: 25%;
-        /*background-color: blue;*/
-      }
-
-      #game-details,
-      #game-controls {
-        float: right;
-      }
-
-      section p {
-        margin: 0;
-      }
-
-      .difficulty-display,
-      .timer,
-      .hint,
-      .medium-toggle {
-        /*width: 100%;*/
-        background-color: rgba(255,255,255,0.4);
-        margin-bottom: 10px;
-      }
-
-      .difficulty-display,
-      .timer-display {
-          padding: 10px 0;
-      }
-
-
-      .difficulty-display span,
-      .timer span {
-        display: block;
-        font-size: 2em;
-        text-align: center;
-      }
-
-      .hint button {
-        width: 100%;
-        border-radius: 0;
-        border: none;
-        background-color: purple;
-        outline: none;
-      }
-
-      input[type="checkbox"].toggle,
-      input[type="radio"].toggle-select {
-         position: absolute;
-         top: -9999px;
-         left: -9999px;
-      }
-
-      label, button { 
-        cursor: pointer;
-        height: 40px;
-      }
-
-      .timer label {
-        background-image: url("./icon_282/icon_282.png");
-        background-size: 30px 30px;
-        background-repeat: no-repeat;
-        background-position: 95%;
-      }
-
-      input[type="checkbox"].toggle + label {
-        display: block;
-        background-color: green;
-        border-bottom: 10px solid rgb(0,100,0);
-      }
-
-      input[type="checkbox"].toggle:checked + label {
-        background-color: red;
-        border-bottom: 10px solid rgb(100,0,0);
-
-      }
-
-      input[type="radio"].toggle-select + label {
-        float: left;
-        box-sizing: border-box;
-        display: inline-block;
-        width: 50%;
-        background-color: rgb(200,200,200);
-        border: 1px solid purple;
-      }
-
-      input[type="radio"].toggle-select-left:checked + label {
-        background-color: rgb(100,100,100);
-      }
-
-      input[type="radio"].toggle-select-right:checked + label {
-        background-color: rgb(100,100,100);
-      }
-
-      .cell {
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
-
-      .hint-overlay {
-        background-color: none;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0.5;
-        pointer-events: none;
-      }
-
-      #puzzle {
-        width: 74%;
-        margin-right: 1%;
-        float: left;
-        /*background-color: pink;*/
-      }
-
-      table {
-        /*width: 74%;*/
-        width: 100%;
-        height: inherit;
-        border-spacing: 0;
-      }
-
-      #soduku-board input {
-        height: 100%;
-        width: 100%;
-        border: none;
-        text-align: center;
-        font-size: 2em;
-      }
-
-      /* Horizontal borders */
-
-      tr:nth-child(3n+1) > td {
-        border-top: 2px solid black;
-        border-bottom: 1px solid gray;
-      }
-
-      tr:nth-child(3n+2) > td {
-        border-bottom: 1px solid gray;
-      } 
-
-      tr:last-child > td { 
-        border-bottom: 2px solid black;
-      }
-
-      /* vertical borders */
-
-      td:nth-child(3n+1) {
-        border-left: 2px solid black;
-        border-right: 1px solid gray;
-      }
-
-      td:nth-child(3n+2) {
-        border-right: 1px solid gray;
-      }
-
-      td:last-child {
-        border-right: 2px solid black;
-      }
-
-      .pen {
-        color: blue;
-      }
-
-      .pencil {
-        /*maybe use thinner font-family*/
-        color: rgb(200,200,200);
-      }
-
-      /*clearfix */
-      .group:before,
-      .group:after {
-          content: "";
-          display: table;
-      } 
-      .group:after {
-          clear: both;
-      }
-      .group {
-          zoom: 1; /* For IE 6/7 (trigger hasLayout) */
-      }
-
-      @media screen and (max-width: 960px) {
-
-        main {
-          width: 100%;
-          overflow: auto;
-        }
-
-        .headline {
-          width: 90%;
-        }
-
-        #puzzle {
-          width: 90%;
-          margin-right: 0;
-          float: none;
-          margin: auto;
-        }
-
-        #game-details,
-        #game-controls {
-          /*position: relative;*/
-          float: none;
-          margin: auto;
-          width: 90%;
-        }
-
-        .difficulty-display,
-        .medium-toggle{
-          float: left;
-          width: 46%;
-          padding: 2%;
-        }
-
-        .timer,
-        .hint {
-          float: right;
-          width: 46%;
-          padding: 2%;
-        }
-
-        .timer-display {
-          width: 75%;
-          float: left;
-        }
-
-        .timer label {
-          width: 25%;
-          float: right;
-        }
-
-      }
-
-
-    </style>
+    <link rel="stylesheet" href="css/sudoku.css">
   </head>
 
   <body>
@@ -309,10 +23,10 @@
           <p><span>Easy</span></p>
         </div>
 
-        <div class="timer">
+        <div id="timer-1" class="timer">
           <div class="timer-display">
             <p>Timer:</p>
-            <p><span class="time-passed">2:07</span></p>
+            <p><span class="time-passed">0:00</span></p>
           </div>
           <input type="checkbox" class="toggle" id="timer-start" value="start">
           <label for="timer-start">Start</label>
@@ -426,7 +140,7 @@
   </section>
 
       <section id="game-controls" class="group">
-        <div class="medium-toggle group">
+        <div id="pallete" class="medium-toggle group">
           <input type="radio" id="medium-option1" class="toggle-select toggle-select-left" name="medium" value="pen" checked>
           <label for="medium-option1">Pen</label>
           <input type="radio" id="medium-option2" class="toggle-select toggle-select-right" name="medium" value="pencil">
@@ -440,21 +154,52 @@
     </main>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/Timer.js"></script>
+    <script src="js/Sudoku.js"></script>
     <script>
 
       var sudokuBoard = $("#soduku-board");
+      var timer = new Timer("#timer-1 .time-passed");
+      var medium = "pen";
 
       var maintainAspectRatio = function(){
         sudokuBoard.css("height", sudokuBoard.width());
       }
 
-      $(document).on("load", maintainAspectRatio());
+      $(document).on("load", (function(){
+        //initializing function calls
+        maintainAspectRatio();
+      })());
+      
       $(window).resize(maintainAspectRatio);
 
-      sudokuBoard.on("change", function(e){
+      // Widget Event handlers (TODO: consolidate events)
+
+      $("#timer-1 .toggle").on("click", function(event){
+        var target = event.target ? event.target : event.srcElement;
+        target.checked ? timer.start() : timer.stop();
+
+      });
+
+      $("#pallete .toggle-select").on("click", function(event){
+        var target = event.target ? event.target : event.srcElement;
+        medium = target.value;
+      });
+
+      sudokuBoard.on("click", function(event){
+        var target = event.target ? event.target : event.srcElement;
+        if(!target.className){
+          $(target).removeClass().addClass(medium);
+        }
+      });
+
+      sudokuBoard.on("change", function(event){
         console.log("cell value changed...");
-        var newCellValue = $(e.target).val();
-        console.log(e.target.dataset.cell);
+        var $target = event.target ? $(event.target) : $(event.srcElement);
+        var newCellValue = $target.val();
+
+        $target.removeClass().addClass(medium);
+        // console.log(event.target.dataset.cell);
         //validate value of cell 
         // try {
         //   board.updateCell()){
@@ -468,7 +213,9 @@
           
       });
 
-      function drawBoard(board){
+      // END event handlers
+
+      function initPuzzleDom(puzzle){
         $("td > input").each(function(index, cell){
           // var value = $(this).attr("data-cell").split(",")[1];
           // console.log(board);
@@ -476,71 +223,15 @@
           var colIndex = (index)%9 ;
           // console.log(rowIndex + ", " + colIndex);
           // console.log(board[rowIndex][colIndex]);
-          var value = board[rowIndex][colIndex];
+          var value = puzzle[rowIndex][colIndex];
           var disabled = Math.round(Math.random()) === 1 ? true : false; 
           
-          if(!disabled){
-            $(this).addClass("pen");
-          }
-
           $(this).val(value);
           $(this).attr("disabled", disabled);
         });
       }
 
-      // Soduku understands the rules for the game of soduku
-
-      function SodukuGame() {
-        this.board = undefined;
-        this.solution = this.generate();
-      }
-
-      SodukuGame.prototype.generate = function(){
-        var solution = [
-          [7, 2, 3, 4, 5, 1, 9, 6, 8],
-          [8, 5, 1, 9, 6, 3, 4, 2, 7],
-          [4, 6, 9, 8, 2, 7, 1, 5, 3],
-          [3, 1, 6, 2, 4, 8, 5, 7, 9],
-          [2, 8, 7, 1, 9, 5, 6, 3, 4],
-          [9, 4, 5, 3, 7, 6, 2, 8, 1],
-          [1, 7, 2, 6, 8, 9, 3, 4, 5],
-          [6, 9, 8, 5, 3, 4, 7, 1, 2],
-          [5, 3, 4, 7, 1, 2, 8, 9, 6]
-        ];
-        // this.solution = {
-        //   A1: 7, A2: 2, A3: 3, A4: 4, A5: 5, A6: 1, A7: 9, A8: 6, A9: 8,
-        //   B1: 8, B2: 5, B3: 1, B4: 9, B5: 6, B6: 3, B7: 4, B8: 2, B9: 7,
-        //   C1: 4, C2: 6, C3: 9, C4: 8, C5: 2, C6: 7, C7: 1, C8: 5, C9: 3,
-        //   D1: 3, D2: 1, D3: 6, D4: 2, D5: 4, D6: 8, D7: 5, D8: 7, D9: 9,
-        //   E1: 2, E2: 8, D3: 7, E4: 1, E5: 9, E6: 5, E7: 6, E8: 3, E9: 4,
-        //   F1: 9, F2: 4, F3: 5, F4: 3, F5: 7, F6: 6, F7: 2, F8: 8, F9: 1,
-        //   G1: 1, G2: 7, G3: 2, G4: 6, G5: 8, G6: 9, G7: 3, G8: 4, G9: 5,
-        //   H1: 6, H2: 9, H3: 8, H4: 5, H5: 3, H6: 4, H7: 7, H8: 1, H9: 2,
-        //   I1: 5, I2: 3, I3: 4, I4: 7, I5: 1, I6: 2, I7: 8, I8: 9, I9: 6
-        // }
-
-        //this.solution = "723451968851963427469827153316248579287195634945376281172689345698534712896"
-        return solution;
-      }
-
-      SodukuGame.prototype.newGame = function(difficulty){
-
-        this.solution = this.generate();
-
-        return this.solution;
-      };
-      SodukuGame.prototype.isWinner = function(){};
-      SodukuGame.prototype.resumeGame = function(){};
-
-      // Board understands the state of a sudoku game
       
-      function SudokuBoard(domBoard) {
-        this.id = domBoard;
-        this.cells = {};
-      }
-
-      SudokuBoard.prototype.isComplete = function(){};
-      SudokuBoard.prototype.updateCell = function(){};
 
       var board = new SudokuBoard();
       // drawBoard([]);

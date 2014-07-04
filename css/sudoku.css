@@ -1,0 +1,294 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(24,24,24);
+  color: rgb(240,240,240);
+}
+
+.headline {
+  margin: auto;
+  height: 100%;
+  width: 960px;
+}
+
+.headline > h1 {
+  display: inline-block;
+  position: relative;
+  bottom: -10px;
+}
+
+.headline > button {
+  display: inline-block;
+  float: right;
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  /*background-color: rgb(200,200,200);*/
+  /*width: 80%;*/
+  width: 960px;
+  /*height: 720px;*/
+  margin: 2% auto 0 auto;
+
+}
+
+section {
+  float: left;
+  width: 25%;
+  /*background-color: blue;*/
+}
+
+#game-details,
+#game-controls {
+  float: right;
+}
+
+section p {
+  margin: 0;
+}
+
+.difficulty-display,
+.timer,
+.hint,
+.medium-toggle {
+  /*width: 100%;*/
+  background-color: rgba(220,220,220,0.4);
+  margin-bottom: 10px;
+}
+
+.difficulty-display,
+.timer-display {
+    padding: 10px 0;
+}
+
+
+.difficulty-display span,
+.timer span {
+  display: block;
+  font-size: 2em;
+  text-align: center;
+}
+
+.hint button {
+  width: 100%;
+  border-radius: 0;
+  border: none;
+  background-color: purple;
+  outline: none;
+}
+
+input[type="checkbox"].toggle,
+input[type="radio"].toggle-select {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+
+label, button { 
+  cursor: pointer;
+  height: 40px;
+}
+
+.timer label {
+  background-image: url("../img/icons/icon_282/icon_282.png");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+  /*pointer-events: none;*/
+}
+
+input[type="checkbox"].toggle + label {
+  display: block;
+  background-color: green;
+  border-bottom: 10px solid rgb(0,100,0);
+}
+
+input[type="checkbox"].toggle:checked + label {
+  background-color: red;
+  border-bottom: 10px solid rgb(100,0,0);
+
+}
+
+input[type="radio"].toggle-select + label {
+  float: left;
+  -webkit-box-sizing: border-box;
+  display: inline-block;
+  width: 50%;
+  background-color: rgb(200,200,200);
+  border: 1px solid purple;
+}
+
+input[type="radio"].toggle-select-left:checked + label {
+  background-color: rgb(100,100,100);
+}
+
+input[type="radio"].toggle-select-right:checked + label {
+  background-color: rgb(100,100,100);
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hint-overlay {
+  background-color: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#puzzle {
+  width: 74%;
+  margin-right: 1%;
+  float: left;
+  /*background-color: pink;*/
+}
+
+table {
+  /*width: 74%;*/
+  width: 100%;
+  height: inherit;
+  border-spacing: 0;
+}
+
+#soduku-board input {
+  height: 98%;
+  width: 98%;
+  border: none;
+  text-align: center;
+  font-size: 2em;
+}
+
+tr {
+  -webkit-box-sizing: border-box;
+}
+
+/* Horizontal borders */
+
+tr:nth-child(3n+1) > td {
+  border-top: 2px solid black;
+  border-bottom: 1px solid gray;
+}
+
+tr:nth-child(3n+2) > td {
+  border-bottom: 1px solid gray;
+} 
+
+tr:last-child > td { 
+  border-bottom: 2px solid black;
+}
+
+/* vertical borders */
+
+td:nth-child(3n+1) {
+  border-left: 2px solid black;
+  border-right: 1px solid gray;
+}
+
+td:nth-child(3n+2) {
+  border-right: 1px solid gray;
+}
+
+td:last-child {
+  border-right: 2px solid black;
+}
+
+.pen {
+  color: blue;
+}
+
+.pencil {
+  /*maybe use thinner font-family*/
+  color: rgb(200,200,200);
+}
+
+/*clearfix */
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+} 
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+@media screen and (max-width: 960px) {
+
+  main {
+    width: 100%;
+    margin: 0;
+    overflow: auto;
+  }
+
+  .headline {
+    width: 90%;
+  }
+
+  #puzzle {
+    width: 90%;
+    margin-right: 0;
+    float: none;
+    margin: auto;
+  }
+
+  #game-details,
+  #game-controls {
+    /*position: relative;*/
+    float: none;
+    margin: 1.5% auto;
+    width: 90%;
+  }
+
+  .difficulty-display,
+  .medium-toggle{
+    margin: 0;
+    float: left;
+    width: 48%;
+    /*padding: 2%;*/
+  }
+
+  .timer,
+  .hint {
+    margin: 0;
+    float: right;
+    width: 48%;
+  }
+
+  .timer-display {
+    width: 75%;
+    float: left;
+  }
+
+  .timer label {
+    width: 25%;
+    float: right;
+  }
+
+/*  .medium-toggle,
+  .hint {
+    margin-top: 1.5%;
+  }*/
+
+}
