@@ -174,12 +174,18 @@ table {
   height: 98%;
   width: 98%;
   border: none;
+  margin: auto;
   text-align: center;
   font-size: 2em;
+  background-color: rgba(255,255,255,0);
 }
 
 tr {
   -webkit-box-sizing: border-box;
+}
+
+td {
+
 }
 
 /* Horizontal borders */
@@ -219,6 +225,10 @@ td:last-child {
 .pencil {
   /*maybe use thinner font-family*/
   color: rgb(200,200,200);
+}
+
+.show-hint {
+  color: rgb(255,0,0);
 }
 
 /*clearfix */

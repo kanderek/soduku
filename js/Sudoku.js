@@ -1,10 +1,17 @@
 // Soduku understands the rules for the game of soduku
 
 function SudokuGame(difficulty) {
-  this.DIFFICULTY = {easy: 50, medium: 40, hard: 30};
+  this.SETTINGS = {easy: 50, medium: 40, hard: 30};
+  this.difficulty = difficulty || "easy";
   this.solution = this.generatePuzzle();
-  this.puzzle = this.initializePuzzle(difficulty);
+  this.puzzle = this.initializePuzzle(this.difficulty);
   this.playersGrid = this.copyPuzzle(this.puzzle);
+}
+
+SudokuGame.prototype.restoreGame = function(solution, puzzle, playersGrid){
+  this.solution = solution;
+  this.puzzle = puzzle;
+  this.playersGrid = playersGrid;
 }
 
 SudokuGame.prototype.generatePuzzle = function(){
@@ -37,15 +44,15 @@ SudokuGame.prototype.generatePuzzle = function(){
 
 SudokuGame.prototype.initializePuzzle = function(difficulty){
   //check is string and key is defined
-  var numberOfBlanks = this.DIFFICULTY[difficulty];
+  var numberOfBlanks = this.SETTINGS[difficulty];
   var i, j;
   var rows = this.solution.length;
   var columns = this.solution[0].length;
   var puzzle = [];
 
   for(i=0; i < rows; i++){
-    puzzle.push([]);
     for(j=0; j < columns; j++){
+      j === 0 ? puzzle.push([]) : null;
       if(Math.random()*100 < numberOfBlanks/81*100){
         puzzle[i].push(this.solution[i][j]);
       }
@@ -72,14 +79,6 @@ SudokuGame.prototype.copyPuzzle = function(puzzle){
   return copy;
 }
 
-SudokuGame.prototype.newGame = function(difficulty){
-
-  this.solution = this.generate();
-
-  return this.solution;
-};
-SudokuGame.prototype.isWinner = function(){};
-SudokuGame.prototype.resumeGame = function(){};
 SudokuGame.prototype.print = function(grid){
 
   var i, j;
@@ -102,12 +101,71 @@ SudokuGame.prototype.print = function(grid){
   console.log(printable);
 };
 
-// Board understands the state of a sudoku game
+SudokuGame.prototype.isSolved = function(){
+  var i, j;
+  var rows = this.playersGrid.length;
+  var columns = this.playersGrid[0].length;
 
-function SudokuBoard(domBoard) {
-  this.id = domBoard;
-  this.cells = [];
+  for(i=0; i < rows; i++){
+    for(j=0; j < columns; j++){
+        if(this.playersGrid[i][j] !== this.solution[i][j]){
+          return false;
+        }
+    }
+  }
+  return true;
+};
+
+SudokuGame.prototype.isComplete = function(){
+  return this.getEmptyCells(this.playersGrid).length === 0;
+};
+
+
+SudokuGame.prototype.playerInput = function(row, column, guess){
+  row = parseInt(row, 10);
+  column = parseInt(column, 10);
+  var parsedGuess = parseInt(guess, 10);
+  if(isNaN(parsedGuess) || parsedGuess <= 0 || parsedGuess >= 10){
+    throw {name: "invalidGuess", message: "a number between 1 and 9 is required"};
+  }
+  this.playersGrid[row][column] = guess;
+};
+
+SudokuGame.prototype.getEmptyCells = function(grid){
+  var i, j;
+  var rows = grid.length;
+  var columns = grid[0].length;
+  var emptyCells = [];
+
+  for(i=0; i < rows; i++){
+    for(j=0; j < columns; j++){
+        if(grid[i][j] === 0){
+          emptyCells.push([i,j]);
+        }
+    }
+  }
+  return emptyCells;
 }
 
-SudokuBoard.prototype.isComplete = function(){};
-SudokuBoard.prototype.updateCell = function(){};
+
+SudokuGame.prototype.giveHint = function(){
+  var emptyCells = this.getEmptyCells(this.playersGrid);
+  var pickANumber = Math.floor(Math.random()*emptyCells.length);
+  
+  console.log("emptyCells length...");
+  console.log(emptyCells.length);
+  console.log(pickANumber);
+  if(emptyCells.length > pickANumber){
+    var row = emptyCells[pickANumber][0];
+    var column = emptyCells[pickANumber][1];
+
+    return {
+      row: row,
+      column: column,
+      hint: this.solution[row][column] 
+    };
+  }
+  else{
+    return {hint: null};
+  }
+}

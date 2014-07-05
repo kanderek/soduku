@@ -12,8 +12,8 @@ Timer.prototype.start = function(){
 	var that = this;
 	
 	this.incrementTimer = setInterval(function(){
+		that.timePassed += 1;
 		that.refreshTimeDom();
-		that.timePassed++;
 	}, 1000)
 }
 
