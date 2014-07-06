@@ -67,6 +67,86 @@ describe("SudokuGame", function() {
     expect(result.column).toBeDefined();
   });
 
+  describe("whichSubGrid", function(){
+    it("should return coordintes of 1, 1 for a row and column of 2, 2 in the larger grid\
+      with start and end indices for the larger grid", function(){
+
+      var subGrid = sudoku.whichSubGrid(2,2);
+      expect(subGrid).toEqual({
+        coordinates: [1,1],
+        startRowIndex: 0,
+        endRowIndex: 2,
+        startColumnIndex: 0,
+        endColumnIndex: 2
+      });
+    });
+
+    it("should return coordintes of 3, 1 for a row and column of 7, 2 in the larger grid\
+      with start and end indices for the larger grid", function(){
+
+      var subGrid = sudoku.whichSubGrid(7,2);
+      expect(subGrid).toEqual({
+        coordinates: [3,1],
+        startRowIndex: 0,
+        endRowIndex: 2,
+        startColumnIndex: 6,
+        endColumnIndex: 8
+      });
+    });
+
+  });
+
+  describe("getPossibleValuesForCell", function(){
+    var sampleGrid; 
+    beforeEach(function(){
+      sampleGrid = [
+        [0, 2, 3, 0, 5, 0, 0, 6, 0], 
+        [8, 0, 0, 9, 0, 0, 4, 2, 0], 
+        [4, 0, 0, 0, 2, 7, 0, 0, 3], 
+        [3, 1, 0, 2, 0, 8, 5, 0, 0], 
+        [2, 8, 0, 1, 9, 0, 6, 3, 4], 
+        [9, 0, 5, 3, 0, 6, 2, 0, 0], 
+        [0, 7, 2, 6, 8, 9, 0, 4, 5], 
+        [0, 0, 0, 5, 0, 0, 7, 1, 2], 
+        [5, 3, 4, 7, 1, 2, 0, 9, 0] 
+      ];
+    });
+
+    it("should return possible values of cell ", function(){
+      var possible = sudoku.getPossibleValuesForCell(sampleGrid, 1, 2);
+      expect(possible.values).toEqual({
+        1: true,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: true,
+        7: true,
+        8: false,
+        9: false
+      });
+    });
+
+    it("should return clash at cell 1,1 of column, row and subgrid for value of 2", function(){
+      var possible = sudoku.getPossibleValuesForCell(sampleGrid, 1, 1, 2);
+      expect(possible.clash).toEqual({
+        row: true,
+        column: true,
+        subgrid: true
+      });
+    });
+
+    it("should return clash at cell 0,3 of column for value of 1", function(){
+      var possible = sudoku.getPossibleValuesForCell(sampleGrid, 0, 3, 1);
+      expect(possible.clash).toEqual({
+        row: false,
+        column: true,
+        subgrid: false
+      });
+    });
+
+  });
+
 
 
 });

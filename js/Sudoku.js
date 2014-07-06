@@ -147,6 +147,81 @@ SudokuGame.prototype.getEmptyCells = function(grid){
   return emptyCells;
 }
 
+SudokuGame.prototype.getPossibleValuesForCell = function(grid, row, column, value){
+  var possibleValues = {
+        row: row,
+        column: column,
+        values: {
+          1: true,
+          2: true,
+          3: true,
+          4: true,
+          5: true,
+          6: true,
+          7: true,
+          8: true,
+          9: true
+        },
+        clash: {row: false, column: false, subgrid: false } 
+      };
+  var valueOfCell = grid[row][column];
+  var i, j;
+  var peerValue;
+  var subGrid = this.whichSubGrid(row, column);
+
+  //check row unit
+  for(i=0; i < grid[row].length; i++){
+    peerValue = grid[row][i]
+    possibleValues[peerValue] = false;
+    possibleValues.clash.row = peerValue === value ? true : possibleValues.clash.row;
+  }
+
+  //check column unit
+  for(i=0; i < grid.length; i++){
+    peerValue = grid[i][column];
+    possibleValues[peerValue] = false;
+    possibleValues.clash.column = peerValue === value ? true : possibleValues.clash.column;
+  }
+
+  //check inside grid unit
+  for(i=subGrid.startColumnIndex; i <= subGrid.endColumnIndex; i++){
+    for(j=subGrid.startRowIndex; j <= subGrid.endRowIndex; j++){
+      peerValue = grid[i][j];
+      possibleValues[peerValue] =  false;
+      possibleValues.clash.subgrid = peerValue === value ? true : possibleValues.clash.subgrid;
+    }
+  }
+
+  delete possibleValues[0];
+
+  return possibleValues;
+}
+
+SudokuGame.prototype.whichSubGrid = function(row, column){
+  var subGrid = {};
+  var subGridRow = this.resolveSubGridCoordinate(row);
+  var subGridColumn = this.resolveSubGridCoordinate(column);
+
+  subGrid.coordinates = [subGridRow, subGridColumn];
+  subGrid.endRowIndex = subGridColumn*3-1;
+  subGrid.startRowIndex = subGrid.endRowIndex - 2;
+  subGrid.endColumnIndex = subGridRow*3-1;
+  subGrid.startColumnIndex = subGrid.endColumnIndex - 2;
+
+  return subGrid;
+}
+
+SudokuGame.prototype.resolveSubGridCoordinate = function(rowOrColumn){
+  if(rowOrColumn < 3){
+    return 1;
+  }
+  else if(rowOrColumn < 6){
+    return 2;
+  }
+  else if(rowOrColumn < 9){
+    return 3;
+  }
+}
 
 SudokuGame.prototype.giveHint = function(){
   var emptyCells = this.getEmptyCells(this.playersGrid);
