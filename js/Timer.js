@@ -9,6 +9,7 @@ Timer.prototype.start = function(){
 	// var now = new Date();
 
 	this.isStopped = false;
+	$(this.domDisplayElement + " .toggle").attr("checked", true);
 	var that = this;
 	
 	this.incrementTimer = setInterval(function(){
@@ -19,12 +20,18 @@ Timer.prototype.start = function(){
 
 Timer.prototype.stop = function(){
 	this.isStopped = true;
+	$(this.domDisplayElement + " .toggle").attr("checked", false);
 	var that = this;
 	clearInterval(that.incrementTimer);
 }
 
 Timer.prototype.reset = function(){
 	this.timePassed = 0;
+	// var timerStarted = $(this.domDisplayElement + " .toggle").attr("checked") === "checked" ? true : false;
+	// if(!timerStarted){
+	// 	this.start();
+	// }
+	this.refreshTimeDom();
 }
 
 Timer.prototype.toString = function(){
@@ -39,7 +46,7 @@ Timer.prototype.toString = function(){
 Timer.prototype.refreshTimeDom = function(){
 	try{
 		if(this.domDisplayElement){
-			$(this.domDisplayElement).html(this.toString());
+			$(this.domDisplayElement + " .time-passed").html(this.toString());
 		}
 		else{
 			console.log(this.toString());

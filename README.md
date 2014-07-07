@@ -13,11 +13,13 @@ TODOs (in order of priority)
 	- button styles 
 	- add subtle background image
 	- apply color pallette
+	- select fonts
 - refactor CSS
 - migrate CSS to SASS
 
 - on click sudoku input - medium class should be applied
 - add control for users to be able to hide the timer
+- add rules walk-through
 - add game settings to UI
 	- allow players to turn on possible values
 	- allow players to see where they have clashes

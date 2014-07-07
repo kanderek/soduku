@@ -9,6 +9,7 @@ body {
 }
 
 header {
+  position: relative;
   width: 100%;
   height: 50px;
   background-color: rgb(24,24,24);
@@ -16,6 +17,8 @@ header {
 }
 
 .headline {
+  position: relative;
+  z-index: 10;
   margin: auto;
   height: 100%;
   width: 960px;
@@ -31,27 +34,91 @@ header h1 {
   margin: 0;
 }
 
-.select-new-puzzle {
+nav.game-menu {
   position: relative;
-  display: inline-block;
   float: right;
+  width: 25%;
+  height: 100%;
 }
 
-.select-puzzle-options {
+nav.game-menu ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+nav.game-menu ul li {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  color: white;
+}
+
+nav.game-menu ul li.game-settings {
+  background-image: url("../img/icons/icon_10135/icon_10135_white.png");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+nav.game-menu ul li {
+  float: left;
+  width: 50%;
+  height: 100%;
+  list-style-type: none;
+}
+
+.select-new-puzzle {
+/*  display: inline-block;
+  position: relative;
+  width: 75%;
+  height: 100%;*/
+}
+
+.game-settings {
+  
+/*  display: inline-block;
+  float: right;*/
+/*  width: 50px;*/
+/*  height: 100%;*/
+  background-color: red;
+}
+
+
+.game-menu-options {
   position: absolute;
   right: 0;
   top: 50px;
-  background-color: red;
-  width: 100px;
-  height: 100px;
+  width: 25%;
+/*  height: 100px;
+  background-color: blue;*/
+  /*display: none;*/
 }
 
-.select-show-options {
-  visibility: visible;
+#game-settings-options, 
+#select-puzzle-options {
+  background-color: black;
+  display: none;
+  z-index: 2;
 }
 
-.select-hide-options {
-  visibility: hidden;
+.difficulty {
+  text-transform: capitalize;
+}
+
+input[type="radio"].toggle-select-list + label {
+  -webkit-box-sizing: border-box;
+  display: block;
+  background-color: rgb(200,200,200);
+  border: 1px solid purple;
+}
+
+input[type="radio"].select-option:checked + label {
+  background-color: rgb(100,100,100);
 }
 
 .caret {
@@ -121,7 +188,8 @@ section p {
 }
 
 input[type="checkbox"].toggle,
-input[type="radio"].toggle-select {
+input[type="radio"].toggle-select,
+input[type="radio"].toggle-select-list {
    position: absolute;
    top: -9999px;
    left: -9999px;
@@ -184,6 +252,11 @@ input[type="radio"].toggle-select-right:checked + label {
   left: 0;
   opacity: 0.5;
   pointer-events: none;
+  word-wrap: break-word;
+}
+
+.clash {
+  background-color: rgba(255,100,100,0.4);
 }
 
 #puzzle {
@@ -212,10 +285,6 @@ table {
 
 tr {
   -webkit-box-sizing: border-box;
-}
-
-td {
-
 }
 
 /* Horizontal borders */
@@ -280,6 +349,24 @@ td:last-child {
     width: 100%;
     margin: 0;
     overflow: auto;
+  }
+
+  nav {
+    width: 100px;
+  }
+
+  .select-new-puzzle {
+    float: right;
+    width: 50px;
+    background-image: url("../img/icons/icon_21727/icon_21727_white.png");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+
+  .select-puzzle-options,
+  .game-settings-options {
+    width: 48%;
   }
 
   .headline {

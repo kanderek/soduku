@@ -168,31 +168,38 @@ SudokuGame.prototype.getPossibleValuesForCell = function(grid, row, column, valu
   var i, j;
   var peerValue;
   var subGrid = this.whichSubGrid(row, column);
+  value = parseInt(value, 10);
 
   //check row unit
   for(i=0; i < grid[row].length; i++){
     peerValue = grid[row][i]
-    possibleValues[peerValue] = false;
-    possibleValues.clash.row = peerValue === value ? true : possibleValues.clash.row;
+    possibleValues.values[peerValue] = false;
+    if(!possibleValues.clash.row){
+      possibleValues.clash.row = peerValue === value ? true : false;
+    }
   }
 
   //check column unit
   for(i=0; i < grid.length; i++){
     peerValue = grid[i][column];
-    possibleValues[peerValue] = false;
-    possibleValues.clash.column = peerValue === value ? true : possibleValues.clash.column;
-  }
-
-  //check inside grid unit
-  for(i=subGrid.startColumnIndex; i <= subGrid.endColumnIndex; i++){
-    for(j=subGrid.startRowIndex; j <= subGrid.endRowIndex; j++){
-      peerValue = grid[i][j];
-      possibleValues[peerValue] =  false;
-      possibleValues.clash.subgrid = peerValue === value ? true : possibleValues.clash.subgrid;
+    possibleValues.values[peerValue] = false;
+    if(!possibleValues.clash.column){
+      possibleValues.clash.column = peerValue === value ? true : false;
     }
   }
 
-  delete possibleValues[0];
+  //check inside grid unit
+  for(i=subGrid.startRowIndex; i <= subGrid.endRowIndex; i++){
+    for(j=subGrid.startColumnIndex; j <= subGrid.endColumnIndex; j++){
+      peerValue = grid[i][j];
+      possibleValues.values[peerValue] =  false;
+      if(!possibleValues.clash.subgrid){
+        possibleValues.clash.subgrid = peerValue === value ? true : false;
+      }
+    }
+  }
+
+  delete possibleValues.values[0];
 
   return possibleValues;
 }
@@ -203,10 +210,10 @@ SudokuGame.prototype.whichSubGrid = function(row, column){
   var subGridColumn = this.resolveSubGridCoordinate(column);
 
   subGrid.coordinates = [subGridRow, subGridColumn];
-  subGrid.endRowIndex = subGridColumn*3-1;
-  subGrid.startRowIndex = subGrid.endRowIndex - 2;
-  subGrid.endColumnIndex = subGridRow*3-1;
+  subGrid.endColumnIndex = subGridColumn*3-1;
   subGrid.startColumnIndex = subGrid.endColumnIndex - 2;
+  subGrid.endRowIndex = subGridRow*3-1;
+  subGrid.startRowIndex = subGrid.endRowIndex - 2;
 
   return subGrid;
 }

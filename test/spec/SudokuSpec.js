@@ -87,17 +87,17 @@ describe("SudokuGame", function() {
       var subGrid = sudoku.whichSubGrid(7,2);
       expect(subGrid).toEqual({
         coordinates: [3,1],
-        startRowIndex: 0,
-        endRowIndex: 2,
-        startColumnIndex: 6,
-        endColumnIndex: 8
+        startRowIndex: 6,
+        endRowIndex: 8,
+        startColumnIndex: 0,
+        endColumnIndex: 2
       });
     });
 
   });
 
   describe("getPossibleValuesForCell", function(){
-    var sampleGrid; 
+    var sampleGrid, solution; 
     beforeEach(function(){
       sampleGrid = [
         [0, 2, 3, 0, 5, 0, 0, 6, 0], 
@@ -109,6 +109,17 @@ describe("SudokuGame", function() {
         [0, 7, 2, 6, 8, 9, 0, 4, 5], 
         [0, 0, 0, 5, 0, 0, 7, 1, 2], 
         [5, 3, 4, 7, 1, 2, 0, 9, 0] 
+      ];
+      solution = [
+        [7, 2, 3, 4, 5, 1, 9, 6, 8],
+        [8, 5, 1, 9, 6, 3, 4, 2, 7],
+        [4, 6, 9, 8, 2, 7, 1, 5, 3],
+        [3, 1, 6, 2, 4, 8, 5, 7, 9],
+        [2, 8, 7, 1, 9, 5, 6, 3, 4],
+        [9, 4, 5, 3, 7, 6, 2, 8, 1],
+        [1, 7, 2, 6, 8, 9, 3, 4, 5],
+        [6, 9, 8, 5, 3, 4, 7, 1, 2],
+        [5, 3, 4, 7, 1, 2, 8, 9, 6]
       ];
     });
 
@@ -124,6 +135,24 @@ describe("SudokuGame", function() {
         7: true,
         8: false,
         9: false
+      });
+    });
+
+    it("should return clash at cell 5,4 of column, row and subgrid for value of 7", function(){
+      var possible = sudoku.getPossibleValuesForCell(sampleGrid, 5, 4, 7);
+      expect(possible.clash).toEqual({
+        row: false,
+        column: false,
+        subgrid: false
+      });
+    });
+
+    it("should return clash at cell 7,4 of column, row and subgrid for value of 2", function(){
+      var possible = sudoku.getPossibleValuesForCell(sampleGrid, 7, 4, 6);
+      expect(possible.clash).toEqual({
+        row: false,
+        column: false,
+        subgrid: true
       });
     });
 
