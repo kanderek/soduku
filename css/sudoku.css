@@ -34,6 +34,10 @@ header h1 {
   margin: 0;
 }
 
+/* 
+  top menu controls 
+*/
+
 nav.game-menu {
   position: relative;
   float: right;
@@ -56,6 +60,7 @@ nav.game-menu ul li {
   vertical-align: middle;
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 nav.game-menu ul li.game-settings {
@@ -69,6 +74,7 @@ nav.game-menu ul li {
   float: left;
   width: 50%;
   height: 100%;
+  line-height: 50px;
   list-style-type: none;
 }
 
@@ -88,37 +94,75 @@ nav.game-menu ul li {
   background-color: red;
 }
 
+/*
+  Menu dropdown styles
+*/
 
 .game-menu-options {
   position: absolute;
   right: 0;
   top: 50px;
   width: 25%;
-/*  height: 100px;
-  background-color: blue;*/
-  /*display: none;*/
 }
 
 #game-settings-options, 
 #select-puzzle-options {
   background-color: black;
   display: none;
-  z-index: 2;
-}
-
-.difficulty {
-  text-transform: capitalize;
+  z-index: 5;
+  line-height: 40px;
 }
 
 input[type="radio"].toggle-select-list + label {
   -webkit-box-sizing: border-box;
   display: block;
-  background-color: rgb(200,200,200);
-  border: 1px solid purple;
+/*  background-color: rgb(200,200,200);*/
+  border-bottom: 1px solid gray;
+  text-align: center;
+}
+
+input[type="radio"].toggle-select-list + label:last-of-type {
+  border-bottom: none;
 }
 
 input[type="radio"].select-option:checked + label {
   background-color: rgb(100,100,100);
+}
+
+#game-settings-options > p {
+  cursor: pointer;
+}
+
+#game-settings-options p {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  border-bottom: 1px solid gray;
+}
+
+.board-display-options {
+  width: 90%;
+  margin: auto;
+}
+
+#game-settings-options label {
+  display: inline-block;
+  float: right;
+  height: 40px;
+  width: 85%;
+}
+
+#game-settings-options input {
+  display: inline-block;
+  margin: 0;
+  float: left;
+  height: 40px;
+  width: 15%;
+}
+
+.difficulty {
+  text-transform: capitalize;
 }
 
 .caret {
@@ -142,6 +186,10 @@ main {
 
 }
 
+/*
+  Sidebar controls/display styles
+*/
+
 section {
   float: left;
   width: 25%;
@@ -153,15 +201,23 @@ section {
   float: right;
 }
 
+#game-details label,
+#game-controls label,
+#game-controls button {
+  text-align: center;
+  font-size: 1.25em;
+}
+
 section p {
   margin: 0;
 }
 
 .difficulty-display,
-.timer,
+.timer-wrapper,
 .hint,
 .medium-toggle {
   /*width: 100%;*/
+  position: relative;
   background-color: rgba(220,220,220,0.4);
   margin-bottom: 10px;
 }
@@ -182,8 +238,9 @@ section p {
 .hint button {
   width: 100%;
   border-radius: 0;
-  border: none;
-  background-color: purple;
+  border: 0;
+  border-bottom: 5px solid rgb(100,100,100);
+  background-color: rgb(200,200,200);
   outline: none;
 }
 
@@ -195,9 +252,12 @@ input[type="radio"].toggle-select-list {
    left: -9999px;
 }
 
-label, button { 
+label,
+button
+{ 
   cursor: pointer;
   height: 40px;
+  line-height: 40px;
 }
 
 .timer label {
@@ -208,15 +268,43 @@ label, button {
   /*pointer-events: none;*/
 }
 
+.close-timer,
+.show-timer,
+.close-rules-modal,
+.play-game {
+  cursor: pointer;
+}
+
+.close-timer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: url("../img/icons/icon_51740/icon_51740.png");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 95% 5%;
+  height: 50px;
+  width: 50px;
+}
+
+.show-timer {
+  background-color: rgba(200,200,200, 1.0);
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  display: none;
+}
+
 input[type="checkbox"].toggle + label {
   display: block;
   background-color: green;
-  border-bottom: 10px solid rgb(0,100,0);
+  border-bottom: 5px solid rgb(0,100,0);
 }
 
 input[type="checkbox"].toggle:checked + label {
   background-color: red;
-  border-bottom: 10px solid rgb(100,0,0);
+  border-bottom: 5px solid rgb(100,0,0);
 
 }
 
@@ -226,21 +314,34 @@ input[type="radio"].toggle-select + label {
   display: inline-block;
   width: 50%;
   background-color: rgb(200,200,200);
-  border: 1px solid purple;
+  border-bottom: 5px solid rgb(100,100,100);
 }
 
 input[type="radio"].toggle-select-left:checked + label {
   background-color: rgb(100,100,100);
+  border-bottom: 5px solid rgb(50,50,50);
 }
 
 input[type="radio"].toggle-select-right:checked + label {
   background-color: rgb(100,100,100);
+  border-bottom: 5px solid rgb(50,50,50);
 }
+
+/*
+  Sudoku Board Styles   
+*/
 
 .cell {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.conflict {
+  background-image: url("../img/icons/icon_51740/icon_51740.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .hint-overlay {
@@ -263,11 +364,9 @@ input[type="radio"].toggle-select-right:checked + label {
   width: 74%;
   margin-right: 1%;
   float: left;
-  /*background-color: pink;*/
 }
 
 table {
-  /*width: 74%;*/
   width: 100%;
   height: inherit;
   border-spacing: 0;
@@ -330,7 +429,91 @@ td:last-child {
   color: rgb(255,0,0);
 }
 
-/*clearfix */
+/*
+  Rules description
+*/
+
+#game-rules {
+  display: none;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  padding: auto;
+  margin: auto;
+  background-color: rgba(50,50,50,0.8);
+  z-index: 15;
+  overflow: auto;
+}
+
+.rules-container {
+  position: relative;
+  width: 720px;
+  margin: 75px auto;
+  /*overflow: auto;*/
+}
+
+.rules-container table {
+  width: 100%;
+  margin: auto;
+  background-color: white;
+}
+
+.rules-container td {
+  font-size: 2em;
+  text-align: center;
+}
+
+.rules-content h1 {
+  position: absolute;
+  height: 78px;
+  width: 314px;
+  top: 0;
+  left: 0;
+  padding-left: 5px;
+  margin: 2px 0 0 2px;
+  background-color: rgba(50,50,50,0.9);
+  color: white;
+  font-size: 3em;
+}
+
+.rules-body {
+  position: absolute;
+  width: 614px;
+  height: 458px;
+  margin: 2px 0 2px 2px;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(50,50,50,0.9);
+  color: white;
+  font-size: 1.5em;
+
+}
+
+.close-rules-modal {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background-image: url("../img/icons/icon_51740/icon_51740.png");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: rgb(200,200,200);
+}
+
+.play-game {
+  color: rgba(100,255,100, 0.8);
+}
+
+.play-game:hover {
+  color: rgb(100,100,100);
+}
+
+/* clearfix */
 .group:before,
 .group:after {
     content: "";
@@ -396,7 +579,7 @@ td:last-child {
     /*padding: 2%;*/
   }
 
-  .timer,
+  .timer-wrapper,
   .hint {
     margin: 0;
     float: right;
@@ -412,10 +595,5 @@ td:last-child {
     width: 25%;
     float: right;
   }
-
-/*  .medium-toggle,
-  .hint {
-    margin-top: 1.5%;
-  }*/
 
 }
