@@ -11,9 +11,9 @@ HTML5, CSS3, JavaScript, Jquery
 TODOs (in order of priority)
 - Beautify UI
 	- button styles 
-	- add subtle background image
 	- apply color pallette
 	- select fonts
+- add hover and active states to controls
 - refactor CSS
 
 - migrate CSS to SASS
@@ -21,7 +21,7 @@ TODOs (in order of priority)
 	- add CSS browser prefixes for CSS3 properties
 
 - Continuous Integration
-	- minify JS/CSS
+	- concat + minify JS and CSS
 
 - use local storage to store game state
 - decompose SudokuGame object

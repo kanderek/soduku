@@ -1,7 +1,7 @@
-function Timer(domDisplayElement) {
-	this.timePassed = 0;
-	this.isStopped = true;
-	this.incrementTimer = null;
+function Timer(domDisplayElement, timePassed, isStopped, incrementTimer) {
+	this.timePassed = timePassed || 0;
+	this.isStopped = isStopped || true;
+	this.incrementTimer = incrementTimer || null;
 	this.domDisplayElement = domDisplayElement;
 }
 
@@ -9,7 +9,7 @@ Timer.prototype.start = function(){
 	// var now = new Date();
 
 	this.isStopped = false;
-	$(this.domDisplayElement + " .toggle").attr("checked", true);
+	$(this.domDisplayElement + " .toggle").prop("checked", true);
 	var that = this;
 	
 	this.incrementTimer = setInterval(function(){
@@ -20,7 +20,7 @@ Timer.prototype.start = function(){
 
 Timer.prototype.stop = function(){
 	this.isStopped = true;
-	$(this.domDisplayElement + " .toggle").attr("checked", false);
+	$(this.domDisplayElement + " .toggle").prop("checked", false);
 	var that = this;
 	clearInterval(that.incrementTimer);
 }

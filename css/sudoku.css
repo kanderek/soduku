@@ -212,6 +212,7 @@ section {
 #game-details label,
 #game-controls label,
 #game-controls button {
+  font-family: serif;
   text-align: center;
   font-size: 1.25em;
 }
@@ -244,6 +245,7 @@ section p {
 }
 
 .hint button {
+
   width: 100%;
   border-radius: 0;
   border: 0;
