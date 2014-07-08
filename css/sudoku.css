@@ -54,13 +54,21 @@ nav.game-menu ul {
 
 nav.game-menu ul li {
   display: inline-block;
-  width: 100%;
-  height: 100%;
   text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
+/*  vertical-align: middle;*/
+  -webkit-box-sizing: border-box;
   color: white;
   cursor: pointer;
+  float: left;
+  width: 50%;
+  height: 100%;
+  line-height: 50px;
+  list-style-type: none;
+  border-right: 1px solid gray;
+}
+
+nav.game-menu ul li:first-child {
+  border-left: 1px solid gray;
 }
 
 nav.game-menu ul li.game-settings {
@@ -71,11 +79,7 @@ nav.game-menu ul li.game-settings {
 }
 
 nav.game-menu ul li {
-  float: left;
-  width: 50%;
-  height: 100%;
-  line-height: 50px;
-  list-style-type: none;
+
 }
 
 .select-new-puzzle {
@@ -85,13 +89,17 @@ nav.game-menu ul li {
   height: 100%;*/
 }
 
+.select-new-puzzle:after {
+  content: "New puzzle";
+}
+
 .game-settings {
   
 /*  display: inline-block;
   float: right;*/
 /*  width: 50px;*/
 /*  height: 100%;*/
-  background-color: red;
+  /*background-color: red;*/
 }
 
 /*
@@ -260,13 +268,10 @@ button
   line-height: 40px;
 }
 
-.timer label {
-  background-image: url("../img/icons/icon_282/icon_282.png");
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  background-position: 95%;
-  /*pointer-events: none;*/
+.timer label:after {
+  content: "Start";
 }
+
 
 .close-timer,
 .show-timer,
@@ -277,14 +282,16 @@ button
 
 .close-timer {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 2px;
+  right: 2px;
   background-image: url("../img/icons/icon_51740/icon_51740.png");
-  background-size: 30px 30px;
+  background-size: 20px 20px;
   background-repeat: no-repeat;
-  background-position: 95% 5%;
-  height: 50px;
-  width: 50px;
+  background-position: 50% 50%;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: rgb(200,200,200);
 }
 
 .show-timer {
@@ -300,6 +307,10 @@ input[type="checkbox"].toggle + label {
   display: block;
   background-color: green;
   border-bottom: 5px solid rgb(0,100,0);
+}
+
+input[type="checkbox"].toggle:checked + label:after {
+  content: "Stop";
 }
 
 input[type="checkbox"].toggle:checked + label {
@@ -335,6 +346,25 @@ input[type="radio"].toggle-select-right:checked + label {
   width: 100%;
   height: 100%;
   position: relative;
+  -webkit-transform: rotateX(0);
+  -webkit-transition: -webkit-transform 1s ease;
+}
+
+.win {
+  -webkit-transform: rotateX(180deg);
+    border-radius: 50%;
+  /*background-color: rgba(208,78,171,0.18263327749446034);*/
+}
+
+.win h1 {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotateX(-180deg);
 }
 
 .conflict {
@@ -449,7 +479,7 @@ td:last-child {
 .rules-container {
   position: relative;
   width: 720px;
-  margin: 75px auto;
+  margin: 75px auto 10px auto;
   /*overflow: auto;*/
 }
 
@@ -488,7 +518,6 @@ td:last-child {
   background-color: rgba(50,50,50,0.9);
   color: white;
   font-size: 1.5em;
-
 }
 
 .close-rules-modal {
@@ -541,10 +570,14 @@ td:last-child {
   .select-new-puzzle {
     float: right;
     width: 50px;
-    background-image: url("../img/icons/icon_21727/icon_21727_white.png");
+    background-image: url("../img/icons/icon_10155/icon_10155_white.png");
     background-size: 30px 30px;
     background-repeat: no-repeat;
     background-position: 50%;
+  }
+
+  .select-new-puzzle:after {
+    content: "";
   }
 
   .select-puzzle-options,
@@ -552,6 +585,9 @@ td:last-child {
     width: 48%;
   }
 
+  .game-menu-options {
+    width: 48%;
+  }
   .headline {
     width: 90%;
   }
@@ -592,8 +628,91 @@ td:last-child {
   }
 
   .timer label {
+    position: absolute;
     width: 25%;
-    float: right;
+    /*float: right;*/
+    bottom: 0;
+    right: 0;
+    background-image: url("../img/icons/icon_282/icon_282_thick.png");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
   }
+
+  .timer label:after {
+    content: "";
+  }
+
+  input[type="checkbox"].toggle:checked + label:after {
+   content: "";
+  }
+
+  .close-timer {
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    width: 25%;
+  }
+
+  .rules-container {
+    width: 95%;
+    margin: 20% auto 2% auto;
+    /*overflow: auto;*/
+  }
+
+
+.rules-content h1 {
+  height: 11%;
+  width: 43.5%;
+  padding-left: 1%;
+  margin: 2px 0 0 2px;
+}
+
+.rules-body {
+  width: 86%;
+  height: 64.2%;
+  margin: 2px 0 2px 2px;
+  padding: 1.1%;
+}
+
+.close-rules-modal {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background-size: 25px 25px;
+  height: 35px;
+  width: 35px;
+}
+
+@media screen and (max-width: 750px) {
+  .rules-content h1 {
+    font-size: 2em;
+  }
+
+  .rules-body {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .rules-content h1 {
+    font-size: 2em;
+  }
+
+  .rules-body {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .rules-content h1 {
+    font-size: 1.5em;
+  }
+
+  .rules-body {
+    font-size: 0.8em;
+  }
+}
 
 }

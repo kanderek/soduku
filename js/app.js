@@ -157,6 +157,7 @@ $sudokuBoard.on("change", function(event){
     if(sudoku.isComplete()){
       if(sudoku.isSolved()){
         console.log("puzzle solved");
+        weHaveAWinner();
       }
       else{
         console.log("puzzle not solved..where to notify")
@@ -215,6 +216,9 @@ function drawPuzzleDom(puzzle){
     var value = puzzle[row][column];
     var possibleValues = showPossibleValues ? sudoku.getPossibleValuesForCell(puzzle, row, column) : {};
 
+    $(this).parent().removeClass().addClass("cell");
+    $(this).parent().css({"background-color": ""});
+    $(this).siblings("h1").remove();
     $(this).next().empty();
 
     if(value === 0){
@@ -302,4 +306,95 @@ function highlightClash(typeOfClash, row, column){
     }
 
   });
+}
+
+function weHaveAWinner(){
+  var message = "GOOD JOB!";
+  var colors = [
+        "#c21617",
+        "#d42819",
+        "#eb401d",
+        "#fd521f",
+        "#fe7516",
+        "#fea309",
+        "#ffc600",
+        "#b5b31a",
+        "#549b3c",
+        "#0a8856",
+        "#067e6a",
+        "#02747f",
+        "#006f89",
+        "#305f83",
+        "#704b7b",
+        "#a03b75",
+        "#9a3659",
+        "#932f33",
+        "#8d2a17",
+        "#702819",
+        "#4a261c",
+        "#2d241e",
+        "#4b4540"
+  ];
+var colors2 = [
+  "rgba(194,22,23,",
+  "rgba(212,40,25,",
+  "rgba(235,64,29,",
+  "rgba(253,82,31,",
+  "rgba(254,117,22,",
+  "rgba(254,163,9,",
+  "rgba(255,198,0,",
+  "rgba(181,179,26,",
+  "rgba(84,155,60,",
+  "rgba(10,136,86,",
+  "rgba(6,126,106,",
+  "rgba(2,116,127,",
+  "rgba(0,111,137,",
+  "rgba(48,95,131,",
+  "rgba(112,75,123,",
+  "rgba(160,59,117,",
+  "rgba(154,54,89,"
+  ];
+
+  // $("td input").each(function(index, cell){
+    // var red = Math.round(Math.random()*255);
+    // var green = Math.round(Math.random()*255);
+    // var blue = Math.round(Math.random()*255);
+    // var alpha = Math.random();
+    // var rgba = "rgba(" + red + "," + green + "," + blue + "," + alpha + ")";
+    var allDone = false;
+    var countdown = 1000;
+    while(!allDone && countdown > 0){
+        var visitCount = 0;
+        var visited = {};
+        var cellNumber = Math.round(Math.random()*81);
+        visited[cellNumber] = true;
+        var thisCell = $("td input").eq(cellNumber);
+
+        var color = colors2[Math.floor(colors2.length*Math.random())];
+        color += 0.8 + ")";//Math.random() + ")";
+        // console.log(color);
+        // $(this).attr("disabled", true).val("");
+        thisCell.attr("disabled", true).val("");
+        // var that = this;
+        setTimeout((function(cell, index, cellColor){
+          // $(that).parent().addClass("win");
+          // $(that).parent().append("<h1>" + message[index%9] + "</h1>");
+          // $(that).parent().css({"background-color": color});
+          return function(){
+            cell.parent().removeClass("win").addClass("win");
+            cell.parent().append("<h1>" + message[index%9] + "</h1>");
+            cell.parent().css({"background-color": cellColor});
+          }
+        })(thisCell, cellNumber, color), 500);
+      for(var i=0; i<81; i++){
+        if(visited[i]){
+          visitCount += 1;
+        }
+      }
+      if(visitCount === 81){
+        allDone = true;
+      }
+      countdown -= 1;
+    }
+  // });
 }
