@@ -15,16 +15,14 @@ TODOs (in order of priority)
 	- apply color pallette
 	- select fonts
 - refactor CSS
-- migrate CSS to SASS
 
-- on click sudoku input - medium class should be applied
-- add control for users to be able to hide the timer
-- add rules walk-through
-- add game settings to UI
-	- allow players to turn on possible values
-	- allow players to see where they have clashes
-	- other?
-- add celebratory ending when a player completes the puzzle correctly 
+- migrate CSS to SASS
+	- use image spritesheet
+	- add CSS browser prefixes for CSS3 properties
+
+- Continuous Integration
+	- minify JS/CSS
+
 - use local storage to store game state
 - decompose SudokuGame object
 - implement puzzle generator
