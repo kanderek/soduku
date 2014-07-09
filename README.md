@@ -1,6 +1,7 @@
 # Sudoku Times
 
 A simply complex game of sudoku for the web and mobile web.
+A working demo of the game can be found here: http://people.ischool.berkeley.edu/~derek/sudoku/
 
 ## Structure of Application 
 
