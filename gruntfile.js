@@ -102,6 +102,6 @@ grunt.loadNpmTasks('grunt-contrib-jshint');
 
 // register at least this one task
 grunt.registerTask('test_node', ['jasmine_node']);
-grunt.registerTask('default', ['jasmine', 'jshint', 'concat', 'uglify', 'cssmin', 'copy', 'ftp-deploy' ]);
+grunt.registerTask('default', ['jasmine', 'concat', 'uglify', 'cssmin', 'copy' ]);
 
 };

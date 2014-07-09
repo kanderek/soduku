@@ -10,13 +10,6 @@ HTML5, CSS3, JavaScript, Jquery, Grunt
 
 TODOs (in order of priority)
 
-- migrate CSS to SASS
-	- use image spritesheet
-	- add CSS browser prefixes for CSS3 properties
-
-- Continuous Integration
-	- run test suites before build
-
 - Beautify UI
 	- button styles 
 	- apply color pallette

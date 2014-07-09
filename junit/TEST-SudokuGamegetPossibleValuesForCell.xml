@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
 
-  <testsuite name="SudokuGame getPossibleValuesForCell" errors="0" tests="5" failures="0" time="0.015" timestamp="Tue Jul 08 2014 20:15:49 GMT-0700 (PDT)">
+  <testsuite name="SudokuGame getPossibleValuesForCell" errors="0" tests="5" failures="0" time="0.015" timestamp="Tue Jul 08 2014 20:55:24 GMT-0700 (PDT)">
     
-      <testcase assertions="0" classname="SudokuGame getPossibleValuesForCell" name="should return possible values of cell " time="0">
+      <testcase assertions="0" classname="SudokuGame getPossibleValuesForCell" name="should return possible values of cell " time="0.001">
         
       </testcase>
     

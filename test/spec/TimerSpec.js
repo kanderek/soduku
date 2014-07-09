@@ -1,9 +1,9 @@
 describe("Timer", function(){
 
-	var timer;
+	var myTimer;
 
 	beforeEach(function(){
-		timer = new Timer();
+		myTimer = new GameTimer();
 		// console.log(jasmine);
 		jasmine.clock().install();
 	});
@@ -12,54 +12,54 @@ describe("Timer", function(){
 		jasmine.clock().uninstall();
 	});
 
-	describe("timer object methods and properties", function(){
+	describe("myTimer object methods and properties", function(){
 
 		it("should exist with zero time passed when created", function(){
-			expect(timer.timePassed).toEqual(0);
-			expect(timer.isStopped).toEqual(true);
+			expect(myTimer.timePassed).toEqual(0);
+			expect(myTimer.isStopped).toEqual(true);
 		});
 
 		it("should have a start method", function(){
-			expect(timer.start).toBeDefined();
+			expect(myTimer.start).toBeDefined();
 		});
 
 		it("should have a stop method", function(){
-			expect(timer.stop).toBeDefined();
+			expect(myTimer.stop).toBeDefined();
 		});
 
 		it("should have a reset method", function(){
-			expect(timer.reset).toBeDefined();
+			expect(myTimer.reset).toBeDefined();
 		});
 	});
 
-	describe("timer start", function(){
-		it("should start the timer", function(){
-			timer.start();
-			expect(timer.isStopped).toBe(false);
+	describe("myTimer start", function(){
+		it("should start the myTimer", function(){
+			myTimer.start();
+			expect(myTimer.isStopped).toBe(false);
 		});
 
-		it("timer should increment after being started", function(){
-			// timer.start();
+		it("myTimer should increment after being started", function(){
+			// myTimer.start();
 			// setTimeout(function(){
-			// 	timer.stop();
+			// 	myTimer.stop();
 			// }, 500); 
 			// jasmine.clock().tick(50);
-			// expect(timer.timePassed).toBeGreaterThan(0);
+			// expect(myTimer.timePassed).toBeGreaterThan(0);
 		});
 	});
 
-	describe("timer stop", function(){
-		it("should stop the timer", function(){
-			timer.stop();
-			expect(timer.isStopped).toBe(true);
+	describe("myTimer stop", function(){
+		it("should stop the myTimer", function(){
+			myTimer.stop();
+			expect(myTimer.isStopped).toBe(true);
 		});
 	});
 
-	describe("timer reset", function(){
+	describe("myTimer reset", function(){
 
 		it("should reset time passed to zero", function(){
-			timer.reset();
-			expect(timer.timePassed).toEqual(0);
+			myTimer.reset();
+			expect(myTimer.timePassed).toEqual(0);
 		});
 	});
 });

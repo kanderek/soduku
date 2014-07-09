@@ -10306,14 +10306,14 @@ if ( typeof noGlobal === strundefined ) {
 return jQuery;
 
 }));;
-function Timer (domDisplayElement, timePassed, isStopped, incrementTimer) {
+function GameTimer (domDisplayElement, timePassed, isStopped, incrementTimer) {
 	this.timePassed = timePassed || 0;
 	this.isStopped = isStopped || true;
 	this.incrementTimer = incrementTimer || null;
 	this.domDisplayElement = domDisplayElement;
 }
 
-Timer.prototype.start = function () {
+GameTimer.prototype.start = function () {
 
 	this.isStopped = false;
 	$(this.domDisplayElement + " .toggle").prop("checked", true);
@@ -10325,14 +10325,14 @@ Timer.prototype.start = function () {
 	}, 1000);
 };
 
-Timer.prototype.stop = function () {
+GameTimer.prototype.stop = function () {
 	this.isStopped = true;
 	$(this.domDisplayElement + " .toggle").prop("checked", false);
 	var that = this;
 	clearInterval(that.incrementTimer);
 };
 
-Timer.prototype.reset = function () {
+GameTimer.prototype.reset = function () {
 	this.timePassed = 0;
 	// var timerStarted = $(this.domDisplayElement + " .toggle").attr("checked") === "checked" ? true : false;
 	// if(!timerStarted){
@@ -10341,7 +10341,7 @@ Timer.prototype.reset = function () {
 	this.refreshTimeDom();
 };
 
-Timer.prototype.toString = function () {
+GameTimer.prototype.toString = function () {
 	var seconds = this.timePassed < 60 ? this.timePassed : this.timePassed%60;
 	var minutes = (this.timePassed - seconds)/60;
 
@@ -10350,7 +10350,7 @@ Timer.prototype.toString = function () {
 	return minutes + ":" + seconds;
 };
 
-Timer.prototype.refreshTimeDom = function () {
+GameTimer.prototype.refreshTimeDom = function () {
 	try{
 		if(this.domDisplayElement){
 			$(this.domDisplayElement + " .time-passed").html(this.toString());
@@ -10625,7 +10625,7 @@ SudokuGame.prototype.giveHint = function () {
 var $sudokuBoard = $("#soduku-board");
 var $sudokuRulesBoard = $("#game-rules table");
 var sudoku = new SudokuGame("easy");
-var timer = new Timer("#timer-1");
+var myTimer = new GameTimer("#timer-1");
 var medium = "pen";
 var difficulty = "easy";
 var showPossibleValues = false;
@@ -10636,7 +10636,7 @@ function saveGame () {
     var savedGame = {};
 
     savedGame.sudoku = sudoku;
-    savedGame.timer = timer;
+    savedGame.myTimer = myTimer;
     savedGame.settings = {
         medium: medium,
         difficulty: difficulty,
@@ -10653,9 +10653,9 @@ function resumeSavedGame(){
     if(storedGame){
         sudoku = storedGame.sudoku;
         sudoku.__proto__ = SudokuGame.prototype;//TODO: do this right
-        timer.stop();
-        timer = storedGame.timer;
-        timer.__proto__ = Timer.prototype;//TODO: do this right
+        myTimer.stop();
+        myTimer = storedGame.myTimer;
+        myTimer.__proto__ = Timer.prototype;//TODO: do this right
         medium = storedGame.settings.medium;
         difficulty = storedGame.settings.difficulty;
         showPossibleValues = storedGame.settings.showPossibleValues;
@@ -10679,12 +10679,12 @@ function restoreUI(){
     styleGuessCells(medium);
     // clearConflictHighlights();
     markConflicts();
-    timer.refreshTimeDom();
-    if(timer.isStopped){
-        timer.stop();
+    myTimer.refreshTimeDom();
+    if(myTimer.isStopped){
+        myTimer.stop();
     }
     else{
-        timer.start();
+        myTimer.start();
     }
     $("#game-settings-options .possible-values").prop("checked", showPossibleValues);
     $("#game-settings-options .highlight-clashes").prop("checked", showClashes);
@@ -10701,7 +10701,7 @@ $(document).on("load", (function(){
     maintainAspectRatio($sudokuBoard);
     drawPuzzleDom(sudoku.puzzle);
     disableCells();
-    timer.start();
+    myTimer.start();
 })());
 
 $(window).resize(function(){
@@ -10743,6 +10743,7 @@ $(".game-menu li").on("click", function(event){
 
 $("#game-settings-options").on("click", function(event){
     var target = event.target ? event.target : event.srcElement;
+    var clashes;
 
     switch(target.className){
         case "game-rules": 
@@ -10756,6 +10757,12 @@ $("#game-settings-options").on("click", function(event){
             break;
         case "highlight-clashes":
             showClashes = target.checked;
+            if(!showClashes){
+                clearConflictHighlights();
+            }
+            else{
+                markConflicts();
+            }
             break;
     }
 });
@@ -10774,7 +10781,7 @@ function newPuzzle (selectedDifficulty) {
     disableCells();
     clearConflictHighlights();
     $("#game-details .difficulty").html(difficulty);
-    timer.reset();
+    myTimer.reset();
 }
 
 $("#hint").on("click", function (event) {
@@ -10792,10 +10799,10 @@ $("#timer-1").on("click", function (event) {
 
     if(target.className === "toggle"){
         if(target.checked){
-            timer.start();
+            myTimer.start();
         }
         else{
-            timer.stop();
+            myTimer.stop();
         }
     }
     else if(target.className === "close-timer"){
@@ -10833,9 +10840,10 @@ $sudokuBoard.on("change", function (event) {
         if(showClashes){
           possibleValues = sudoku.getPossibleValuesForCell(sudoku.playersGrid, row, column, newCellValue);
           highlightClash(possibleValues.clash, row, column);
+          markConflicts();
         }
         sudoku.playerInput(row, column, newCellValue);
-        markConflicts();
+        // markConflicts();
         drawPuzzleDom(sudoku.playersGrid);//causes a required to be added to the changed cell
 
         if(sudoku.isComplete()){

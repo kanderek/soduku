@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="Timer myTimer start" errors="0" tests="2" failures="0" time="0.001" timestamp="Tue Jul 08 2014 20:55:24 GMT-0700 (PDT)">
+    
+      <testcase assertions="0" classname="Timer myTimer start" name="should start the myTimer" time="0.001">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="Timer myTimer start" name="myTimer should increment after being started" time="0">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

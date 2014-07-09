@@ -1,12 +1,12 @@
 
-function Timer (domDisplayElement, timePassed, isStopped, incrementTimer) {
+function GameTimer (domDisplayElement, timePassed, isStopped, incrementTimer) {
 	this.timePassed = timePassed || 0;
 	this.isStopped = isStopped || true;
 	this.incrementTimer = incrementTimer || null;
 	this.domDisplayElement = domDisplayElement;
 }
 
-Timer.prototype.start = function () {
+GameTimer.prototype.start = function () {
 
 	this.isStopped = false;
 	$(this.domDisplayElement + " .toggle").prop("checked", true);
@@ -18,14 +18,14 @@ Timer.prototype.start = function () {
 	}, 1000);
 };
 
-Timer.prototype.stop = function () {
+GameTimer.prototype.stop = function () {
 	this.isStopped = true;
 	$(this.domDisplayElement + " .toggle").prop("checked", false);
 	var that = this;
 	clearInterval(that.incrementTimer);
 };
 
-Timer.prototype.reset = function () {
+GameTimer.prototype.reset = function () {
 	this.timePassed = 0;
 	// var timerStarted = $(this.domDisplayElement + " .toggle").attr("checked") === "checked" ? true : false;
 	// if(!timerStarted){
@@ -34,7 +34,7 @@ Timer.prototype.reset = function () {
 	this.refreshTimeDom();
 };
 
-Timer.prototype.toString = function () {
+GameTimer.prototype.toString = function () {
 	var seconds = this.timePassed < 60 ? this.timePassed : this.timePassed%60;
 	var minutes = (this.timePassed - seconds)/60;
 
@@ -43,7 +43,7 @@ Timer.prototype.toString = function () {
 	return minutes + ":" + seconds;
 };
 
-Timer.prototype.refreshTimeDom = function () {
+GameTimer.prototype.refreshTimeDom = function () {
 	try{
 		if(this.domDisplayElement){
 			$(this.domDisplayElement + " .time-passed").html(this.toString());

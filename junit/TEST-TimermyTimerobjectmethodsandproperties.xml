@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="Timer myTimer object methods and properties" errors="0" tests="4" failures="0" time="0.002" timestamp="Tue Jul 08 2014 20:55:24 GMT-0700 (PDT)">
+    
+      <testcase assertions="0" classname="Timer myTimer object methods and properties" name="should exist with zero time passed when created" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="Timer myTimer object methods and properties" name="should have a start method" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="Timer myTimer object methods and properties" name="should have a stop method" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="Timer myTimer object methods and properties" name="should have a reset method" time="0.001">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

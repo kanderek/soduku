@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
 
-  <testsuite name="SudokuGame" errors="0" tests="10" failures="0" time="" timestamp="Tue Jul 08 2014 20:15:49 GMT-0700 (PDT)">
+  <testsuite name="SudokuGame" errors="0" tests="10" failures="0" time="" timestamp="Tue Jul 08 2014 20:55:24 GMT-0700 (PDT)">
     
       <testcase assertions="0" classname="SudokuGame" name="difficulty should be easy by default" time="0.001">
         
       </testcase>
     
-      <testcase assertions="0" classname="SudokuGame" name="should not be complete on creation" time="0">
+      <testcase assertions="0" classname="SudokuGame" name="should not be complete on creation" time="0.001">
         
       </testcase>
     
@@ -23,7 +23,7 @@
         
       </testcase>
     
-      <testcase assertions="0" classname="SudokuGame" name="should be solved when playersGrid equals the puzzle solution" time="0">
+      <testcase assertions="0" classname="SudokuGame" name="should be solved when playersGrid equals the puzzle solution" time="0.001">
         
       </testcase>
     
@@ -35,7 +35,7 @@
         
       </testcase>
     
-      <testcase assertions="0" classname="SudokuGame" name="a full grid should return no hints" time="0">
+      <testcase assertions="0" classname="SudokuGame" name="a full grid should return no hints" time="0.001">
         
       </testcase>
     

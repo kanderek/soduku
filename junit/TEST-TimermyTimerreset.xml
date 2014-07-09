@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="Timer myTimer reset" errors="0" tests="1" failures="0" time="0.005" timestamp="Tue Jul 08 2014 20:55:24 GMT-0700 (PDT)">
+    
+      <testcase assertions="0" classname="Timer myTimer reset" name="should reset time passed to zero" time="0.001">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

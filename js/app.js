@@ -2,7 +2,7 @@
 var $sudokuBoard = $("#soduku-board");
 var $sudokuRulesBoard = $("#game-rules table");
 var sudoku = new SudokuGame("easy");
-var timer = new Timer("#timer-1");
+var myTimer = new GameTimer("#timer-1");
 var medium = "pen";
 var difficulty = "easy";
 var showPossibleValues = false;
@@ -13,7 +13,7 @@ function saveGame () {
     var savedGame = {};
 
     savedGame.sudoku = sudoku;
-    savedGame.timer = timer;
+    savedGame.myTimer = myTimer;
     savedGame.settings = {
         medium: medium,
         difficulty: difficulty,
@@ -30,9 +30,9 @@ function resumeSavedGame(){
     if(storedGame){
         sudoku = storedGame.sudoku;
         sudoku.__proto__ = SudokuGame.prototype;//TODO: do this right
-        timer.stop();
-        timer = storedGame.timer;
-        timer.__proto__ = Timer.prototype;//TODO: do this right
+        myTimer.stop();
+        myTimer = storedGame.myTimer;
+        myTimer.__proto__ = Timer.prototype;//TODO: do this right
         medium = storedGame.settings.medium;
         difficulty = storedGame.settings.difficulty;
         showPossibleValues = storedGame.settings.showPossibleValues;
@@ -56,12 +56,12 @@ function restoreUI(){
     styleGuessCells(medium);
     // clearConflictHighlights();
     markConflicts();
-    timer.refreshTimeDom();
-    if(timer.isStopped){
-        timer.stop();
+    myTimer.refreshTimeDom();
+    if(myTimer.isStopped){
+        myTimer.stop();
     }
     else{
-        timer.start();
+        myTimer.start();
     }
     $("#game-settings-options .possible-values").prop("checked", showPossibleValues);
     $("#game-settings-options .highlight-clashes").prop("checked", showClashes);
@@ -78,7 +78,7 @@ $(document).on("load", (function(){
     maintainAspectRatio($sudokuBoard);
     drawPuzzleDom(sudoku.puzzle);
     disableCells();
-    timer.start();
+    myTimer.start();
 })());
 
 $(window).resize(function(){
@@ -120,6 +120,7 @@ $(".game-menu li").on("click", function(event){
 
 $("#game-settings-options").on("click", function(event){
     var target = event.target ? event.target : event.srcElement;
+    var clashes;
 
     switch(target.className){
         case "game-rules": 
@@ -133,6 +134,12 @@ $("#game-settings-options").on("click", function(event){
             break;
         case "highlight-clashes":
             showClashes = target.checked;
+            if(!showClashes){
+                clearConflictHighlights();
+            }
+            else{
+                markConflicts();
+            }
             break;
     }
 });
@@ -151,7 +158,7 @@ function newPuzzle (selectedDifficulty) {
     disableCells();
     clearConflictHighlights();
     $("#game-details .difficulty").html(difficulty);
-    timer.reset();
+    myTimer.reset();
 }
 
 $("#hint").on("click", function (event) {
@@ -169,10 +176,10 @@ $("#timer-1").on("click", function (event) {
 
     if(target.className === "toggle"){
         if(target.checked){
-            timer.start();
+            myTimer.start();
         }
         else{
-            timer.stop();
+            myTimer.stop();
         }
     }
     else if(target.className === "close-timer"){
@@ -210,9 +217,10 @@ $sudokuBoard.on("change", function (event) {
         if(showClashes){
           possibleValues = sudoku.getPossibleValuesForCell(sudoku.playersGrid, row, column, newCellValue);
           highlightClash(possibleValues.clash, row, column);
+          markConflicts();
         }
         sudoku.playerInput(row, column, newCellValue);
-        markConflicts();
+        // markConflicts();
         drawPuzzleDom(sudoku.playersGrid);//causes a required to be added to the changed cell
 
         if(sudoku.isComplete()){
