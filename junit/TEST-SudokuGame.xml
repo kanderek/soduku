@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="SudokuGame" errors="0" tests="10" failures="0" time="" timestamp="Tue Jul 08 2014 20:15:49 GMT-0700 (PDT)">
+    
+      <testcase assertions="0" classname="SudokuGame" name="difficulty should be easy by default" time="0.001">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="should not be complete on creation" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="should not be solved" time="0.001">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="playersGrid should equal puzzle on creation" time="0.001">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="should be complete when playersGrid is fillled" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="should be solved when playersGrid equals the puzzle solution" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="should throw error on invalid input of &#39;a&#39;" time="0.001">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="should not throw error on valid input of 1" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="a full grid should return no hints" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame" name="a grid with empty cells should return a hint with a row and column" time="0.001">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

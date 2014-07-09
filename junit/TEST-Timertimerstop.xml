@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="Timer timer stop" errors="0" tests="1" failures="0" time="0.001" timestamp="Tue Jul 08 2014 20:15:49 GMT-0700 (PDT)">
+    
+      <testcase assertions="0" classname="Timer timer stop" name="should stop the timer" time="0">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

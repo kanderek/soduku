@@ -20,7 +20,7 @@ describe("SudokuGame", function() {
 
   it("playersGrid should equal puzzle on creation", function(){
     expect(sudoku.playersGrid).toEqual(sudoku.puzzle);
-  })
+  });
 
   it("should be complete when playersGrid is fillled", function(){
     sudoku.playersGrid = sudoku.generatePuzzle();
@@ -68,8 +68,8 @@ describe("SudokuGame", function() {
   });
 
   describe("whichSubGrid", function(){
-    it("should return coordintes of 1, 1 for a row and column of 2, 2 in the larger grid\
-      with start and end indices for the larger grid", function(){
+    it("should return coordintes of 1, 1 for a row and column of 2, 2 in the larger grid" +
+      "with start and end indices for the larger grid", function(){
 
       var subGrid = sudoku.whichSubGrid(2,2);
       expect(subGrid).toEqual({
@@ -81,8 +81,8 @@ describe("SudokuGame", function() {
       });
     });
 
-    it("should return coordintes of 3, 1 for a row and column of 7, 2 in the larger grid\
-      with start and end indices for the larger grid", function(){
+    it("should return coordintes of 3, 1 for a row and column of 7, 2 in the larger grid" +
+      "with start and end indices for the larger grid", function(){
 
       var subGrid = sudoku.whichSubGrid(7,2);
       expect(subGrid).toEqual({

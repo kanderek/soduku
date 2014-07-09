@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="SudokuGame getPossibleValuesForCell" errors="0" tests="5" failures="0" time="0.015" timestamp="Tue Jul 08 2014 20:15:49 GMT-0700 (PDT)">
+    
+      <testcase assertions="0" classname="SudokuGame getPossibleValuesForCell" name="should return possible values of cell " time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame getPossibleValuesForCell" name="should return clash at cell 5,4 of column, row and subgrid for value of 7" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame getPossibleValuesForCell" name="should return clash at cell 7,4 of column, row and subgrid for value of 2" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame getPossibleValuesForCell" name="should return clash at cell 1,1 of column, row and subgrid for value of 2" time="0">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame getPossibleValuesForCell" name="should return clash at cell 0,3 of column for value of 1" time="0">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

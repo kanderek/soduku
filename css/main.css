@@ -1,0 +1,1243 @@
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 9, ../sass/partials/_normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, ../sass/partials/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 32, ../sass/partials/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 52, ../sass/partials/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 65, ../sass/partials/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 75, ../sass/partials/_normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 87, ../sass/partials/_normalize.scss */
+a {
+  background: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 95, ../sass/partials/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 107, ../sass/partials/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 115, ../sass/partials/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 124, ../sass/partials/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 133, ../sass/partials/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 142, ../sass/partials/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 151, ../sass/partials/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 159, ../sass/partials/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 167, ../sass/partials/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 171, ../sass/partials/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 182, ../sass/partials/_normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 190, ../sass/partials/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 201, ../sass/partials/_normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 209, ../sass/partials/_normalize.scss */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 219, ../sass/partials/_normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 227, ../sass/partials/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 250, ../sass/partials/_normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 264, ../sass/partials/_normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 275, ../sass/partials/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 288, ../sass/partials/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 300, ../sass/partials/_normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 309, ../sass/partials/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 320, ../sass/partials/_normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 332, ../sass/partials/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 344, ../sass/partials/_normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 355, ../sass/partials/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 368, ../sass/partials/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 377, ../sass/partials/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 388, ../sass/partials/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 397, ../sass/partials/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 406, ../sass/partials/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 417, ../sass/partials/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 422, ../sass/partials/_normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
+/* line 6, ../sass/partials/_sudoku.scss */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* line 12, ../sass/partials/_sudoku.scss */
+body {
+  margin: 0;
+}
+
+/* line 16, ../sass/partials/_sudoku.scss */
+header {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: #181818;
+  color: #f0f0f0;
+}
+
+/* line 24, ../sass/partials/_sudoku.scss */
+.headline {
+  position: relative;
+  z-index: 10;
+  margin: auto;
+  height: 100%;
+  width: 960px;
+}
+
+/* line 32, ../sass/partials/_sudoku.scss */
+.headline > h1 {
+  display: inline-block;
+  position: relative;
+  bottom: -10px;
+}
+
+/* line 38, ../sass/partials/_sudoku.scss */
+header h1 {
+  margin: 0;
+}
+
+/* 
+  top menu controls 
+*/
+/* line 46, ../sass/partials/_sudoku.scss */
+nav.game-menu {
+  position: relative;
+  float: right;
+  width: 25%;
+  height: 100%;
+}
+
+/* line 53, ../sass/partials/_sudoku.scss */
+nav.game-menu ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 60, ../sass/partials/_sudoku.scss */
+nav.game-menu ul li {
+  display: inline-block;
+  text-align: center;
+  /*  vertical-align: middle;*/
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  float: left;
+  width: 50%;
+  height: 100%;
+  line-height: 50px;
+  list-style-type: none;
+  border-right: 1px solid gray;
+}
+
+/* line 75, ../sass/partials/_sudoku.scss */
+nav.game-menu ul li:first-child {
+  border-left: 1px solid gray;
+}
+
+/* line 79, ../sass/partials/_sudoku.scss */
+nav.game-menu ul li.game-settings {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAr9JREFUeNrsne1Rg0AQQI+MBdiB2oHpACrQDoQKjBWoFagVGCswVmA6SDoQO0gHuIuHYkKIOsCtznszN8Tor33ufR/nHADAnyHa9QdFURzL45RQdcJKyjyKouWPhIiEfXlMpJxJOSSOnZNLuRYx051CfEY8ImIQ5lIyEZM3ChEZqTxupOwTq0GrsaSqxqK1zHhGRjApRyJlFdXajAXVVNjqS4Qke/6HCTKCE0tixFWGvCDEBLNIrfi2Awww0lQhDLaEgDEhB4TBlpBXwkCVBS1C5oTBDoxDjI1DqirrgViY4K4+uUiWhKWcy2K21wa5lPHHbC9SgvJlPeRLt9d/mUhZEqdhqin3vg6y3DoO0V9KGcvHDDG9ikjKNkOqqY1ubxtSjWlDH9Pgd4L+gy/ra+gAAAAAAAAAAAAA8B9pnX4vikIPe544pt+7ojz0KeWp6XzhViF+R/w9EnqXc7EupunQp54xnBCvwZh6MasNISJDsyIlRoNTbgHSD6OajBQZwYh9zeTqhz51oxzbf8KSVBkyQYYJLtlsbW0c4ncrLgiFDUZkhj0hx4TBlhAwJoT9u8aE5ITBUC+Lbq/NNoQzhjaYMXVii3GZIX7qNyMeQbktD0vVv2EtJBhTkZF9NOprUq7kcUmMhpfRKMRLiR1LuH2jww1dKZxtdHu3wSaHztm5yQEAAAAAAAAAAAAA/gPfvVgydqy3d8HvLpb0IlL3vnJ4SBw7J3c/vFhSVwvZ89s/milZPWN4kbKNaoyLJQ1K0VeN53UhC6qpoHy+jN834PfEJDgZm62NNfKcMTQGF0saFEKvypgQQAi0CckJgy0hnMI1BOMQY6P1qg25JhYmeGAuy1B2cLGkHTZne5ESVEbrxZJjel7DVVM+M5pXDNeyJZXHOe1KL6iAu2+tqTeI0e5wTLe4E3LfeDMY/yu8CTAAf3sBlYzDbAgAAAAASUVORK5CYII=');
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+/* line 86, ../sass/partials/_sudoku.scss */
+.select-new-puzzle:after {
+  content: "New puzzle";
+}
+
+/*
+  Menu dropdown styles
+*/
+/* line 94, ../sass/partials/_sudoku.scss */
+.game-menu-options {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 25%;
+}
+
+/* line 101, ../sass/partials/_sudoku.scss */
+#game-settings-options,
+#select-puzzle-options {
+  background-color: black;
+  display: none;
+  z-index: 5;
+  line-height: 40px;
+}
+
+/* line 109, ../sass/partials/_sudoku.scss */
+input[type="radio"].toggle-select-list + label {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  /*  background-color: rgb(200,200,200);*/
+  border-bottom: 1px solid gray;
+  text-align: center;
+}
+
+/* line 117, ../sass/partials/_sudoku.scss */
+input[type="radio"].toggle-select-list + label:last-of-type {
+  border-bottom: none;
+}
+
+/* line 121, ../sass/partials/_sudoku.scss */
+input[type="radio"].select-option:checked + label {
+  background-color: #646464;
+}
+
+/* line 125, ../sass/partials/_sudoku.scss */
+#game-settings-options > p {
+  cursor: pointer;
+}
+
+/* line 129, ../sass/partials/_sudoku.scss */
+#game-settings-options p {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  border-bottom: 1px solid gray;
+}
+
+/* line 137, ../sass/partials/_sudoku.scss */
+.board-display-options {
+  width: 90%;
+  margin: auto;
+}
+
+/* line 142, ../sass/partials/_sudoku.scss */
+#game-settings-options label {
+  display: inline-block;
+  float: right;
+  height: 40px;
+  width: 85%;
+}
+
+/* line 149, ../sass/partials/_sudoku.scss */
+#game-settings-options input {
+  display: inline-block;
+  margin: 0;
+  float: left;
+  height: 40px;
+  width: 15%;
+}
+
+/* line 157, ../sass/partials/_sudoku.scss */
+.difficulty {
+  text-transform: capitalize;
+}
+
+/* line 161, ../sass/partials/_sudoku.scss */
+.caret {
+  width: 0px;
+  height: 0px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+
+/* line 169, ../sass/partials/_sudoku.scss */
+main {
+  /*background-color: rgb(200,200,200);*/
+  /*width: 80%;*/
+  width: 960px;
+  /*height: 720px;*/
+  margin: 2% auto 0 auto;
+}
+
+/*
+  Sidebar controls/display styles
+*/
+/* line 182, ../sass/partials/_sudoku.scss */
+section {
+  float: left;
+  width: 25%;
+}
+
+/* line 187, ../sass/partials/_sudoku.scss */
+#game-details,
+#game-controls {
+  float: right;
+}
+
+/* line 192, ../sass/partials/_sudoku.scss */
+#game-details label,
+#game-controls label,
+#game-controls button {
+  font-family: serif;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+/* line 200, ../sass/partials/_sudoku.scss */
+section p {
+  margin: 0;
+}
+
+/* line 204, ../sass/partials/_sudoku.scss */
+.difficulty-display,
+.timer-wrapper,
+.hint,
+.medium-toggle {
+  position: relative;
+  background-color: rgba(220, 220, 220, 0.4);
+  margin-bottom: 10px;
+}
+
+/* line 213, ../sass/partials/_sudoku.scss */
+.difficulty-display,
+.timer-display {
+  padding: 10px 0;
+}
+
+/* line 219, ../sass/partials/_sudoku.scss */
+.difficulty-display span,
+.timer span {
+  display: block;
+  font-size: 2em;
+  text-align: center;
+}
+
+/* line 226, ../sass/partials/_sudoku.scss */
+.hint button {
+  width: 100%;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 5px solid #646464;
+  background-color: #c8c8c8;
+  outline: none;
+}
+
+/* line 236, ../sass/partials/_sudoku.scss */
+input[type="checkbox"].toggle,
+input[type="radio"].toggle-select,
+input[type="radio"].toggle-select-list {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+/* line 244, ../sass/partials/_sudoku.scss */
+label,
+button {
+  cursor: pointer;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* line 252, ../sass/partials/_sudoku.scss */
+.timer label:after {
+  content: "Start";
+}
+
+/* line 257, ../sass/partials/_sudoku.scss */
+.close-timer,
+.show-timer,
+.close-rules-modal,
+.play-game {
+  cursor: pointer;
+}
+
+/* line 264, ../sass/partials/_sudoku.scss */
+.close-timer {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFM0E4QzI3REZGMTkxMUUzODlCNkM4MTA0MDVFQ0IzNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFM0E4QzI3RUZGMTkxMUUzODlCNkM4MTA0MDVFQ0IzNSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUzQThDMjdCRkYxOTExRTM4OUI2QzgxMDQwNUVDQjM1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUzQThDMjdDRkYxOTExRTM4OUI2QzgxMDQwNUVDQjM1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jNcbYwAABshJREFUeNrsnWloXUUYhr8k1Taa1lhMta0QhBqsGLUSq8bULUKKRlNsbXAB0WJcfqiIFvzh0rj9cCkoVbCC1aAVWxe07qJRMSmGpsYNF2yqtiGNllajJiZNrt/LmUia3nNz9vnm3HnhJYSbe3JmnjMzZ7ZvCjKZDFnJUaHNAgvEygKxQKwskHRoitsHzc3N1NHRkeu7xewzlCvYh7OH2DvYW9mfsrelNN/ms6vZley57Gnsv9jb2Z2NjY1tVVVVO3NdoLy8nIqLiw/8AK+92VxbW+t2renslezv8fUc/pu9UQFLi5ayP1QPXq607ykqKnqevZBN2dze3p41312B1NfXZ7uh89nfTnIzEz3CXq2eIlOFGuAdn+mGh1XaDygKbW1toYFcz94X4KbG/DF7loEwUFX0hUg3/MnEtLsB8dqoX8d+kl0UImFnsd9mH2kQjMXs19llIa+ziL2JfVgUb1nnsNdElMBT2G8ZAgUwXmYfEtH1TmU/HRZICfupkCXDRChRwxjTMvYVYYDcwD42hgRLhhIXjDHdk62R9wJkmgISlyRCqYsZBjSPfWEQIOg/HBNzBkiCgpLxSswwxnRpECA1CWWEBCiLEygZ47XQrV9WOElniPIAStIwoNnKvoCUJpwxOqDogAFNJWfszxeQYQ1Pa5JQdMEYU5FfIDs03WgSUHTDGGX3+wWyRWMjGycU3TCg3exev0Ba2YMpgyIBBoQR871+gfxMzmAgpQSKFBjQG0GHTh5U9Z3pUCTBwMzii0GBYA73MQGJCANFEgzoCfbOoECgO8iZHzcRSp0wGJj2vj/XH3gBgoYdc8lbDYOS5NiUF6ERv4z9Z1gg0G9szOl+YwgUadUUICzx8lD7WZfVw76A/YNwKBJhNJCzpoCiBAL9oqB0C4UiFUar1y8EWbn4k4LyqyAoM9nnmQ4jKBDoO3JmvXqFQPksDTDCAIG+Ug397wIy4DhKfrogchhhgUAYgLyIXMZl8lChYEQBBNqsXun6LYxwMKICQuqVDp3HfyyMcIpyf8j77OXsfy0MGUCgN9mXk57pX+NhxAEEwvjRVaR/2N44GHEBgdazV1gYcoBA68jZxmBhCAECYeX8zRaGHCAQZhxXWhhygEAPse+0MOQAge5TtjCEACFVSh62MOQAgW5nP25hyAEC3aTewCwMIUBI9VHWCYSxWxcM3UCgq9mdgmBk1IPSqusGdAO5jZxALlJUwL6VNG6v0wnkLtU/KRZWZSHKj7aIE7qAPMBeJbhRX6ALig4gj5CzXli6tEBJGsgaVUebIkBJdCNqUkDQWCLwyo1knhLdHZwEEOw2fY7MnrBKDErcQA4mZ/bwSjJfiUCJEwheZzdQjrgeFkpyQBBn61X2xZQ+xQolDiBYY4uweHWUXsUGJWogR5CzNutcSr9igRIlkKNUR6qa8keRQ4kKyNHkxLWtovxTpFCiAIKoc++xT6L8VWRQwgKpUDDmk1UkUMIAOUHBmGdZRAclKBAMur3LLheSEZgDx6r7zaZDCQLkNNWAzxEEAzu41qufnSZD8QtkkfpHs4TB+Ej9voucLdvGQvEDBEdVIKD8TKEwKA1QvALBkQ2vsWcIh2E8FC9AEPv9JfahhsCQCgW1S2lYIPh8rQHVlAlQMIrxTFggOF7hbENhSISC+18RFAjmwW8xHIZEKKtytcW5gByv+hymw5AGZa6qeXwDqSH9S02jgiENyvIgQE5MGQxJUBa4VVu5gMzWeMP9McGQAgUzq3P8AjlIY8loiBGGBCjI9+l+gfRrgrEkARgSoOzzC2R7ymHohIIwVn2+gAwODnbkAQxdULpHRkayx6t0Owu3paWlrLCwEKH7MjH7D5KzbAgDgFviTnNNTc3qvr4+f4cTd3d345jpZ/MIRlJQRpuamk52y/dcVRZ+YMvZcEqrKV3V14ahoaEvgnQMoa/Zj+YRjLih7KFJAvF4GRq5mzzGLU8JjDihXEPOyUWhgCCoJbYUdET0hDQYAGMilM9DXgdtRxM5s64UFgiE4yrGDkcJqi/JmQpuJbO0S6V9Y8DvI+8wurvWaxfeHStew/Z/upepYvejjxtCKPJ72WeSjENhgmivqiWuJe8nQyAIKJYmnU5OYND/NTAw4PqlKblgjI5mDSyKaUjMsWMzziXkTE1iIHLquCEBPBWIDb9JlaoeSoewcRW7wpYqY9S2bFw+4sCvbdXV1R9UVFS8QC5nQXI/xPUfFEwoBftR7OrqIrfPx6lYASlVJQ6Ndi9NcrRPSjRDpX2G6h7gQeyprKzMlJSUBLpggYcMt0pQhTYLLBArC8QCsQqo/wQYAE8JDVEgGWVHAAAAAElFTkSuQmCC');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 30px;
+  width: 30px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #c8c8c8;
+}
+
+/* line 278, ../sass/partials/_sudoku.scss */
+.show-timer {
+  background-color: #c8c8c8;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  display: none;
+}
+
+/* line 287, ../sass/partials/_sudoku.scss */
+input[type="checkbox"].toggle + label {
+  display: block;
+  background-color: green;
+  border-bottom: 5px solid darkgreen;
+}
+
+/* line 293, ../sass/partials/_sudoku.scss */
+input[type="checkbox"].toggle:checked + label:after {
+  content: "Stop";
+}
+
+/* line 297, ../sass/partials/_sudoku.scss */
+input[type="checkbox"].toggle:checked + label {
+  background-color: red;
+  border-bottom: 5px solid #640000;
+}
+
+/* line 303, ../sass/partials/_sudoku.scss */
+input[type="radio"].toggle-select + label {
+  float: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 50%;
+  background-color: #c8c8c8;
+  border-bottom: 5px solid #646464;
+}
+
+/* line 312, ../sass/partials/_sudoku.scss */
+input[type="radio"].toggle-select-left:checked + label {
+  background-color: #646464;
+  border-bottom: 5px solid #323232;
+}
+
+/* line 317, ../sass/partials/_sudoku.scss */
+input[type="radio"].toggle-select-right:checked + label {
+  background-color: #646464;
+  border-bottom: 5px solid #323232;
+}
+
+/*
+  Sudoku Board Styles   
+*/
+/* line 326, ../sass/partials/_sudoku.scss */
+.cell {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -moz-transform: rotateX(0);
+  -webkit-transform: rotateX(0);
+  transform: rotateX(0);
+  -moz-transition: -moz-transform 1s ease;
+  -o-transition: -o-transform 1s ease;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+}
+
+/* line 334, ../sass/partials/_sudoku.scss */
+.win {
+  -moz-transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  /*background-color: rgba(208,78,171,0.18263327749446034);*/
+}
+
+/* line 340, ../sass/partials/_sudoku.scss */
+.win h1 {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  -moz-transform: rotateX(-180deg);
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+}
+
+/* line 351, ../sass/partials/_sudoku.scss */
+.conflict {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFM0E4QzI3REZGMTkxMUUzODlCNkM4MTA0MDVFQ0IzNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFM0E4QzI3RUZGMTkxMUUzODlCNkM4MTA0MDVFQ0IzNSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUzQThDMjdCRkYxOTExRTM4OUI2QzgxMDQwNUVDQjM1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUzQThDMjdDRkYxOTExRTM4OUI2QzgxMDQwNUVDQjM1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jNcbYwAABshJREFUeNrsnWlo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');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+/* line 358, ../sass/partials/_sudoku.scss */
+.hint-overlay {
+  background-color: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  word-wrap: break-word;
+}
+
+/* line 370, ../sass/partials/_sudoku.scss */
+.clash {
+  background-color: rgba(255, 100, 100, 0.4);
+}
+
+/* line 374, ../sass/partials/_sudoku.scss */
+#puzzle {
+  width: 74%;
+  margin-right: 1%;
+  float: left;
+}
+
+/* line 380, ../sass/partials/_sudoku.scss */
+table {
+  width: 100%;
+  height: inherit;
+  border-spacing: 0;
+}
+
+/* line 386, ../sass/partials/_sudoku.scss */
+#soduku-board input {
+  height: 98%;
+  width: 98%;
+  border: none;
+  margin: auto;
+  text-align: center;
+  font-size: 2em;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/* line 396, ../sass/partials/_sudoku.scss */
+tr {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Horizontal borders */
+/* line 402, ../sass/partials/_sudoku.scss */
+tr:nth-child(3n+1) > td {
+  border-top: 2px solid black;
+  border-bottom: 1px solid gray;
+}
+
+/* line 407, ../sass/partials/_sudoku.scss */
+tr:nth-child(3n+2) > td {
+  border-bottom: 1px solid gray;
+}
+
+/* line 411, ../sass/partials/_sudoku.scss */
+tr:last-child > td {
+  border-bottom: 2px solid black;
+}
+
+/* vertical borders */
+/* line 417, ../sass/partials/_sudoku.scss */
+td:nth-child(3n+1) {
+  border-left: 2px solid black;
+  border-right: 1px solid gray;
+}
+
+/* line 422, ../sass/partials/_sudoku.scss */
+td:nth-child(3n+2) {
+  border-right: 1px solid gray;
+}
+
+/* line 426, ../sass/partials/_sudoku.scss */
+td:last-child {
+  border-right: 2px solid black;
+}
+
+/* line 430, ../sass/partials/_sudoku.scss */
+.pen {
+  color: blue;
+}
+
+/* line 434, ../sass/partials/_sudoku.scss */
+.pencil {
+  /*maybe use thinner font-family*/
+  color: #c8c8c8;
+}
+
+/* line 439, ../sass/partials/_sudoku.scss */
+.show-hint {
+  color: red;
+}
+
+/*
+  Rules description
+*/
+/* line 447, ../sass/partials/_sudoku.scss */
+#game-rules {
+  display: none;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  padding: auto;
+  margin: auto;
+  background-color: rgba(50, 50, 50, 0.8);
+  z-index: 15;
+  overflow: auto;
+}
+
+/* line 460, ../sass/partials/_sudoku.scss */
+.rules-container {
+  position: relative;
+  width: 720px;
+  margin: 75px auto 10px auto;
+  /*overflow: auto;*/
+}
+
+/* line 467, ../sass/partials/_sudoku.scss */
+.rules-container table {
+  width: 100%;
+  margin: auto;
+  background-color: white;
+}
+
+/* line 473, ../sass/partials/_sudoku.scss */
+.rules-container td {
+  font-size: 2em;
+  text-align: center;
+}
+
+/* line 478, ../sass/partials/_sudoku.scss */
+.rules-content h1 {
+  position: absolute;
+  height: 78px;
+  width: 314px;
+  top: 0;
+  left: 0;
+  padding-left: 5px;
+  margin: 2px 0 0 2px;
+  background-color: rgba(50, 50, 50, 0.9);
+  color: white;
+  font-size: 3em;
+}
+
+/* line 491, ../sass/partials/_sudoku.scss */
+.rules-body {
+  position: absolute;
+  width: 614px;
+  height: 458px;
+  margin: 2px 0 2px 2px;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(50, 50, 50, 0.9);
+  color: white;
+  font-size: 1.5em;
+}
+
+/* line 504, ../sass/partials/_sudoku.scss */
+.close-rules-modal {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFM0E4QzI3REZGMTkxMUUzODlCNkM4MTA0MDVFQ0IzNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFM0E4QzI3RUZGMTkxMUUzODlCNkM4MTA0MDVFQ0IzNSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUzQThDMjdCRkYxOTExRTM4OUI2QzgxMDQwNUVDQjM1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUzQThDMjdDRkYxOTExRTM4OUI2QzgxMDQwNUVDQjM1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jNcbYwAABshJREFUeNrsnWlo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');
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 35px;
+  width: 35px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: #c8c8c8;
+}
+
+/* line 518, ../sass/partials/_sudoku.scss */
+.play-game {
+  color: rgba(100, 255, 100, 0.8);
+}
+
+/* line 522, ../sass/partials/_sudoku.scss */
+.play-game:hover {
+  color: #646464;
+}
+
+/* clearfix */
+/* line 527, ../sass/partials/_sudoku.scss */
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+
+/* line 532, ../sass/partials/_sudoku.scss */
+.group:after {
+  clear: both;
+}
+
+/* line 535, ../sass/partials/_sudoku.scss */
+.group {
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */
+}
+
+@media screen and (max-width: 960px) {
+  /* line 541, ../sass/partials/_sudoku.scss */
+  main {
+    width: 100%;
+    margin: 0;
+    overflow: auto;
+  }
+
+  /* line 547, ../sass/partials/_sudoku.scss */
+  nav {
+    width: 100px;
+  }
+
+  /* line 551, ../sass/partials/_sudoku.scss */
+  .select-new-puzzle {
+    float: right;
+    width: 50px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABeCAYAAADVA7GfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAl5JREFUeNrsnY1NwkAUgK9MwAbiBMIGdQOYwLIBbqATwAbABOAE1glgA3CCskF9J1dCVGigr+0Vvy+5NIEE0vdxf717R2AaTpqmoVzaUrrupbWUXRAEsYHqJEhZpPksnDAoSURHynt6OVZMmwjqyuhKSdLrWRFFPRntgjIyxkRTR8gi1aNDRIt34JpMfb7fVgOcPCl/Xt/nmw0aUEMSN8/QpCfzlDU15PpJnzbeDoGb0GT9KxCCEEAIQgAhCAGEIAQQghBACCAEIYAQhABCEAIIQQggBBCCEEAIQgAhCIHqOLvZ2uVShFLs9cFUvyf2OJlTk+/E0IrvZSvlU8ry3Ebv4ISIyOzTAEJ+s6XJmUuZiJzdSSGuRkwRURlWxqtImfwSYpMq5fJuPN6qf8PMRMrwIMSlDK9cXwH1YJuv52yUNUJG7YxsglJWQ8pIG4PLiVsio48MbwhbJY3zgZk6QgAhCIEahMSEwR+yeciGiaFfTdacUPgxMTx+uLhiTlI7veNO/dHsF26gHoZ24eogxC2UWCkTYlMpNu4Dif/s0Kn/xB2LZFcMI+JVGlvzx6ph3pq6fegYur7lroaR2C2tqVs+3PfGvh6gZnJ+ENrnLWaEzNQBIQgBhCAEEIIQQAggBCGAEIQAQhACCEEIIAQQghBACEIAIQgBhCAEEAII8Qyv/y3abfZO1G9aoIZcFzi7U1x7l/iSJqsY2vmPbzRZxZstmyWscUDOVmrdPTWkeLM1VPq4AcMGvZoyLpikExFFfSmRPWztQhGJzxlTtyCl42rLJkeEff/F9UGN4UuAAQDQyQw3X+o+FAAAAABJRU5ErkJggg==');
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+
+  /* line 560, ../sass/partials/_sudoku.scss */
+  .select-new-puzzle:after {
+    content: "";
+  }
+
+  /* line 564, ../sass/partials/_sudoku.scss */
+  .select-puzzle-options,
+  .game-settings-options {
+    width: 48%;
+  }
+
+  /* line 569, ../sass/partials/_sudoku.scss */
+  .game-menu-options {
+    width: 48%;
+  }
+
+  /* line 572, ../sass/partials/_sudoku.scss */
+  .headline {
+    width: 90%;
+  }
+
+  /* line 576, ../sass/partials/_sudoku.scss */
+  #puzzle {
+    width: 90%;
+    margin-right: 0;
+    float: none;
+    margin: auto;
+  }
+
+  /* line 583, ../sass/partials/_sudoku.scss */
+  #game-details,
+  #game-controls {
+    /*position: relative;*/
+    float: none;
+    margin: 1.5% auto;
+    width: 90%;
+  }
+
+  /* line 591, ../sass/partials/_sudoku.scss */
+  .difficulty-display,
+  .medium-toggle {
+    margin: 0;
+    float: left;
+    width: 48%;
+    /*padding: 2%;*/
+  }
+
+  /* line 599, ../sass/partials/_sudoku.scss */
+  .timer-wrapper,
+  .hint {
+    margin: 0;
+    float: right;
+    width: 48%;
+  }
+
+  /* line 606, ../sass/partials/_sudoku.scss */
+  .timer-display {
+    width: 75%;
+    float: left;
+  }
+
+  /* line 611, ../sass/partials/_sudoku.scss */
+  .timer label {
+    position: absolute;
+    width: 25%;
+    /*float: right;*/
+    bottom: 0;
+    right: 0;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABkCAYAAAACLffiAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABM1JREFUeNrsncF12zAMQBG3A2iD6thb1AmiTFCPoN56q3PrUZ3AzQRKJ3AzgZ0J5E5g59iTnQlS6YV6VfyoWBIBAqSI9/Ds9xIl5DcJkgAIAwQhlXcOtTWp9KN6f3Sl0ReCYc4rvVLvI83v7CvdVvpQ6Ua9D/KG1BDzSneVPo/Q+rlFx4cxaYkrLUZC1elBfVABdCUZIlgd6IS7gzMBo5fS5ERTB+y9BMABcAAcJAAOgCUeekp1eFlK2O6NlZxwH1xragDXi5OiNMBdcE8PMAtXpmFBDHjIkbkP3LaWEk1HpI7HK2Kwp7pS/xcLblszKQ6dpZpez4yqcwSZwG106YunDBt0jAC30YVtU5ALBEutcxtw5wJMAefMiChH7WqiYNtaUMBNYHyox0dF3b5lAah2W4giywCzU+sdilFeRG1rvga/UKc8wUs6wWi4YZSeTyMIcKkXu6Emoj6tfA+zv7f8HZI6NcdcHc/IVtmvR/ifElW/HtXiEbe2h5fqVZpnq27vdV/AdePXxM7mu0rvFdjjyQebaBr/W3PQqX/3s60j6zm4MCBJsQR73q22OTqcWUSyN5xMOdORvRw6EHPLYIcupMWZ4/tSMtyE6JQTI3+geY9+lNLggrK7mI3o4zMdOyM4Y4Cj4GZgP9MxBfoAJ7Y7dRRcQPSO7QZsoWwAbkwGFuQ1p4dsqAPaFmBsyCnH6B2TAG0TMOYivuYYvWM6bBswZn97DyaMnUM+srMcgAEp1NUrVBQjrargGOAIwR5r15uZZgtjKjcOer2OCO2O+vArgTeiyjWCsczjito8xI4DThHMRKeJMG1g7T7cO+4g3xj2ITrl2AZ8Zdi4X55EIW4RZoEWsElE4KhxgLsqd4bPX1IA9gVuM1g2Bs8nOsCm8ax78EseDJ6NdYBNY22+1WrYGD6fngJODafUPgDWC8Y9OV8rjZgMmgQT8D4A1u6HXwE22QM/QhBSE4EpW6ZnJwP4OHKjfwdCS31JvAx+M3A0bkGwi3SGML0+EIzi654j+ScMzAGzLe/V6xPWyQUR8pdKf1T6DfTJf7fEO5jYsP2vJAdEH6gnghLwxTARIspnIUuK9YdmXUOaq0FCxNT5tcGeEoVngE1ic52XX0wCnj7Z4QgQA58zpJNQr5C1I2Lajz9dP8hAyPVRZjHNy0vf2vdxh+0l7B5Qw/aYdtiHxW5NPYsXwJNVKcX2mvY963M85Ez+49w57MBSsjln+iqXYNy/7m0eM+BLwOYQlv5yXSHgOBKzXITJgfmKkyW4WJdg5mOM/sFjyOzXuDBtkzRzkQLuRUSjtaZEhpwxw80B/94169Gxq1G2TUYM+PeuD1iuAYpyALaKHDc1NCnqRiwwG0lVCoCqbDclWKOFzcaq2zWiC0NfbOOTpq6fOej+9ZCiSJlFb9kGXpKg9yfa/sAjZQOboki2To6fgDBNKyceHdLVyi5oqoXprDqwpgaZJZBQBLgBshM216bPQlItdhFwqRwonCryG16ajb7rRfKX4EAiY+bgaN6BY9HwyKEFMAeH029jwaALcD8TSRzog7Kz3oDVmY4F0FdC1bkXM5jY17HHCvaKaKQ23yHHOlovBAFv6rBfttyRffajTW33xr25BX8vqJOblzRgCPJK/gkwAH+QsMaKwLlDAAAAAElFTkSuQmCC');
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  /* line 623, ../sass/partials/_sudoku.scss */
+  .timer label:after {
+    content: "";
+  }
+
+  /* line 627, ../sass/partials/_sudoku.scss */
+  input[type="checkbox"].toggle:checked + label:after {
+    content: "";
+  }
+
+  /* line 631, ../sass/partials/_sudoku.scss */
+  .close-timer {
+    top: 0;
+    right: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    width: 25%;
+  }
+
+  /* line 638, ../sass/partials/_sudoku.scss */
+  .rules-container {
+    width: 95%;
+    margin: 20% auto 2% auto;
+    /*overflow: auto;*/
+  }
+
+  /* line 645, ../sass/partials/_sudoku.scss */
+  .rules-content h1 {
+    height: 11%;
+    width: 43.5%;
+    padding-left: 1%;
+    margin: 2px 0 0 2px;
+  }
+
+  /* line 652, ../sass/partials/_sudoku.scss */
+  .rules-body {
+    width: 86%;
+    height: 64.2%;
+    margin: 2px 0 2px 2px;
+    padding: 1.1%;
+  }
+
+  /* line 659, ../sass/partials/_sudoku.scss */
+  .close-rules-modal {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-size: 25px 25px;
+    height: 35px;
+    width: 35px;
+  }
+}
+@media screen and (max-width: 960px) and (max-width: 750px) {
+  /* line 669, ../sass/partials/_sudoku.scss */
+  .rules-content h1 {
+    font-size: 2em;
+  }
+
+  /* line 673, ../sass/partials/_sudoku.scss */
+  .rules-body {
+    font-size: 1.2em;
+  }
+}
+@media screen and (max-width: 960px) and (max-width: 600px) {
+  /* line 679, ../sass/partials/_sudoku.scss */
+  .rules-content h1 {
+    font-size: 2em;
+  }
+
+  /* line 683, ../sass/partials/_sudoku.scss */
+  .rules-body {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 960px) and (max-width: 500px) {
+  /* line 690, ../sass/partials/_sudoku.scss */
+  .rules-content h1 {
+    font-size: 1.5em;
+  }
+
+  /* line 694, ../sass/partials/_sudoku.scss */
+  .rules-body {
+    font-size: 0.8em;
+  }
+}

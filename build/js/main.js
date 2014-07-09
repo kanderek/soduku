@@ -10305,52 +10305,52 @@ if ( typeof noGlobal === strundefined ) {
 
 return jQuery;
 
-}));;function Timer(domDisplayElement) {
-	this.timePassed = 0;
-	this.isStopped = true;
-	this.incrementTimer = null;
+}));;
+function Timer (domDisplayElement, timePassed, isStopped, incrementTimer) {
+	this.timePassed = timePassed || 0;
+	this.isStopped = isStopped || true;
+	this.incrementTimer = incrementTimer || null;
 	this.domDisplayElement = domDisplayElement;
 }
 
-Timer.prototype.start = function(){
-	// var now = new Date();
+Timer.prototype.start = function () {
 
 	this.isStopped = false;
-	$(this.domDisplayElement + " .toggle").attr("checked", true);
+	$(this.domDisplayElement + " .toggle").prop("checked", true);
 	var that = this;
 	
-	this.incrementTimer = setInterval(function(){
+	this.incrementTimer = setInterval(function () {
 		that.timePassed += 1;
 		that.refreshTimeDom();
-	}, 1000)
-}
+	}, 1000);
+};
 
-Timer.prototype.stop = function(){
+Timer.prototype.stop = function () {
 	this.isStopped = true;
-	$(this.domDisplayElement + " .toggle").attr("checked", false);
+	$(this.domDisplayElement + " .toggle").prop("checked", false);
 	var that = this;
 	clearInterval(that.incrementTimer);
-}
+};
 
-Timer.prototype.reset = function(){
+Timer.prototype.reset = function () {
 	this.timePassed = 0;
 	// var timerStarted = $(this.domDisplayElement + " .toggle").attr("checked") === "checked" ? true : false;
 	// if(!timerStarted){
 	// 	this.start();
 	// }
 	this.refreshTimeDom();
-}
+};
 
-Timer.prototype.toString = function(){
+Timer.prototype.toString = function () {
 	var seconds = this.timePassed < 60 ? this.timePassed : this.timePassed%60;
 	var minutes = (this.timePassed - seconds)/60;
 
 	seconds = seconds < 10 ? "0" + seconds : seconds; 
 
 	return minutes + ":" + seconds;
-}
+};
 
-Timer.prototype.refreshTimeDom = function(){
+Timer.prototype.refreshTimeDom = function () {
 	try{
 		if(this.domDisplayElement){
 			$(this.domDisplayElement + " .time-passed").html(this.toString());
@@ -10362,472 +10362,538 @@ Timer.prototype.refreshTimeDom = function(){
 	catch(error){
 		console.log("there was an error drawing to dom");
 	}
-};// Soduku understands the rules for the game of soduku
+};;// Soduku understands the rules for the game of soduku
 
 function SudokuGame(difficulty) {
-  this.SETTINGS = {easy: 50, medium: 40, hard: 30};
-  this.difficulty = difficulty || "easy";
-  this.solution = this.generatePuzzle();
-  this.puzzle = this.initializePuzzle(this.difficulty);
-  this.playersGrid = this.copyPuzzle(this.puzzle);
+
+    this.SETTINGS = {easy: 50, medium: 40, hard: 30};
+    this.difficulty = difficulty || "easy";
+    this.solution = this.generatePuzzle();
+    this.puzzle = this.initializePuzzle(this.difficulty);
+    this.playersGrid = this.copyPuzzle(this.puzzle);
 }
 
-SudokuGame.prototype.restoreGame = function(solution, puzzle, playersGrid){
-  this.solution = solution;
-  this.puzzle = puzzle;
-  this.playersGrid = playersGrid;
-}
+SudokuGame.prototype.generatePuzzle = function () {
 
-SudokuGame.prototype.generatePuzzle = function(){
-  var solution = [
-    [7, 2, 3, 4, 5, 1, 9, 6, 8],
-    [8, 5, 1, 9, 6, 3, 4, 2, 7],
-    [4, 6, 9, 8, 2, 7, 1, 5, 3],
-    [3, 1, 6, 2, 4, 8, 5, 7, 9],
-    [2, 8, 7, 1, 9, 5, 6, 3, 4],
-    [9, 4, 5, 3, 7, 6, 2, 8, 1],
-    [1, 7, 2, 6, 8, 9, 3, 4, 5],
-    [6, 9, 8, 5, 3, 4, 7, 1, 2],
-    [5, 3, 4, 7, 1, 2, 8, 9, 6]
-  ];
-  
-  return solution;
-}
+    var solution = [
+            [7, 2, 3, 4, 5, 1, 9, 6, 8],
+            [8, 5, 1, 9, 6, 3, 4, 2, 7],
+            [4, 6, 9, 8, 2, 7, 1, 5, 3],
+            [3, 1, 6, 2, 4, 8, 5, 7, 9],
+            [2, 8, 7, 1, 9, 5, 6, 3, 4],
+            [9, 4, 5, 3, 7, 6, 2, 8, 1],
+            [1, 7, 2, 6, 8, 9, 3, 4, 5],
+            [6, 9, 8, 5, 3, 4, 7, 1, 2],
+            [5, 3, 4, 7, 1, 2, 8, 9, 6]
+        ];
 
-SudokuGame.prototype.initializePuzzle = function(difficulty){
-  //check is string and key is defined
-  var numberOfBlanks = this.SETTINGS[difficulty];
-  var i, j;
-  var rows = this.solution.length;
-  var columns = this.solution[0].length;
-  var puzzle = [];
-
-  for(i=0; i < rows; i++){
-    for(j=0; j < columns; j++){
-      j === 0 ? puzzle.push([]) : null;
-      if(Math.random()*100 < numberOfBlanks/81*100){
-        puzzle[i].push(this.solution[i][j]);
-      }
-      else{
-        puzzle[i].push(0);
-      }
-    }
-  }
-  return puzzle;
-}
-
-SudokuGame.prototype.copyPuzzle = function(puzzle){
-  var i, j;
-  var rows = puzzle.length;
-  var columns = puzzle[0].length;
-  var copy = [];
-
-  for(i=0; i < rows; i++){
-    copy.push([]);
-    for(j=0; j < columns; j++){
-        copy[i].push(puzzle[i][j]);
-    }
-  }
-  return copy;
-}
-
-SudokuGame.prototype.print = function(grid){
-
-  var i, j;
-  var rows = grid.length;
-  var columns = grid[0].length;
-  var printable = "";
-
-  for(i=0; i < rows; i++){
-    if(i%3 === 0){
-      printable += "- - - - - - - - - - - - \n";
-    }
-    for(j=0; j < columns; j++){
-      if((j)%3 === 0 ){
-        printable += "| "
-      }
-      printable += grid[i][j] + " ";
-    }
-    printable += "\n";
-  }
-  console.log(printable);
+    return solution;
 };
 
-SudokuGame.prototype.isSolved = function(){
-  var i, j;
-  var rows = this.playersGrid.length;
-  var columns = this.playersGrid[0].length;
+SudokuGame.prototype.initializePuzzle = function (difficulty) {
+    //check is string and key is defined
+    var numberOfBlanks = this.SETTINGS[difficulty];
+    var i, j;
+    var rows = this.solution.length;
+    var columns = this.solution[0].length;
+    var puzzle = [];
 
-  for(i=0; i < rows; i++){
-    for(j=0; j < columns; j++){
-        if(parseInt(this.playersGrid[i][j],10) !== parseInt(this.solution[i][j],10)){
-          return false;
+    for(i=0; i < rows; i++){
+        puzzle.push([]);
+        for(j=0; j < columns; j++){
+            if(Math.random()*100 < numberOfBlanks/81*100){
+                puzzle[i].push(this.solution[i][j]);
+            }
+            else{
+                puzzle[i].push(0);
+            }
         }
     }
-  }
-  return true;
+    return puzzle;
 };
 
-SudokuGame.prototype.isComplete = function(){
-  return this.getEmptyCells(this.playersGrid).length === 0;
-};
+SudokuGame.prototype.copyPuzzle = function (puzzle) {
+    var i, j;
+    var rows = puzzle.length;
+    var columns = puzzle[0].length;
+    var copy = [];
 
-
-SudokuGame.prototype.playerInput = function(row, column, guess){
-  row = parseInt(row, 10);
-  column = parseInt(column, 10);
-  var parsedGuess = parseInt(guess, 10);
-  // var spaces = /\s*/;
-  // console.log(guess);
-  // console.log(guess.match(spaces));
-  if(guess !== ""){
-    if(isNaN(parsedGuess) || parsedGuess <= 0 || parsedGuess >= 10){
-      throw {name: "invalidGuess", message: "a number between 1 and 9 is required"};
-    }
-  }
-  this.playersGrid[row][column] = guess == "" ? 0 : guess;
-};
-
-SudokuGame.prototype.getPlayersGuesses = function(){
-  var gridOfGuesses = [];
-  var i, j;
-  for(i=0; i<this.puzzle.length; i++){
-    gridOfGuesses.push([]);
-    for(j=0; j<this.puzzle[i].length; j++){
-      gridOfGuesses[i].push(this.playersGrid[i][j]-this.puzzle[i][j]);
-    }
-  }
-  return gridOfGuesses;
-};
-
-SudokuGame.prototype.getEmptyCells = function(grid){
-  var i, j;
-  var rows = grid.length;
-  var columns = grid[0].length;
-  var emptyCells = [];
-
-  for(i=0; i < rows; i++){
-    for(j=0; j < columns; j++){
-        if(grid[i][j] === 0){
-          emptyCells.push([i,j]);
+    for(i=0; i < rows; i++){
+        copy.push([]);
+        for(j=0; j < columns; j++){
+            copy[i].push(puzzle[i][j]);
         }
     }
-  }
-  return emptyCells;
-}
+    return copy;
+};
 
-SudokuGame.prototype.getPossibleValuesForCell = function(grid, row, column, value){
-  var possibleValues = {
+SudokuGame.prototype.print = function (grid) {
+
+    var i, j;
+    var rows = grid.length;
+    var columns = grid[0].length;
+    var printable = "";
+
+    for(i=0; i < rows; i++){
+        if(i%3 === 0){
+          printable += "- - - - - - - - - - - - \n";
+        }
+        for(j=0; j < columns; j++){
+            if((j)%3 === 0 ){
+                printable += "| ";
+            }
+            printable += grid[i][j] + " ";
+        }
+        printable += "\n";
+    }
+    console.log(printable);
+};
+
+SudokuGame.prototype.isSolved = function () {
+    var i, j;
+    var rows = this.playersGrid.length;
+    var columns = this.playersGrid[0].length;
+
+    for(i=0; i < rows; i++){
+        for(j=0; j < columns; j++){
+            if(parseInt(this.playersGrid[i][j],10) !== parseInt(this.solution[i][j],10)){
+                return false;
+            }
+        }
+    }
+    return true;
+};
+
+SudokuGame.prototype.isComplete = function () {
+    return this.getEmptyCells(this.playersGrid).length === 0;
+};
+
+
+SudokuGame.prototype.playerInput = function (row, column, guess) {
+    row = parseInt(row, 10);
+    column = parseInt(column, 10);
+    var parsedGuess = parseInt(guess, 10);
+    // var spaces = /\s*/;
+    // console.log(guess);
+    // console.log(guess.match(spaces));
+    if(guess !== ""){
+        if(isNaN(parsedGuess) || parsedGuess <= 0 || parsedGuess >= 10){
+          throw {name: "invalidGuess", message: "a number between 1 and 9 is required"};
+        }
+    }
+    this.playersGrid[row][column] = guess === "" ? 0 : guess;
+};
+
+SudokuGame.prototype.getPlayersGuesses = function () {
+    var gridOfGuesses = [];
+    var i, j;
+
+    for(i=0; i<this.puzzle.length; i++){
+
+        gridOfGuesses.push([]);
+
+        for(j=0; j<this.puzzle[i].length; j++){
+            gridOfGuesses[i].push(this.playersGrid[i][j]-this.puzzle[i][j]);
+        }
+    }
+    return gridOfGuesses;
+};
+
+SudokuGame.prototype.getEmptyCells = function (grid) {
+    var i, j;
+    var rows = grid.length;
+    var columns = grid[0].length;
+    var emptyCells = [];
+
+    for(i=0; i < rows; i++){
+        for(j=0; j < columns; j++){
+            if(grid[i][j] === 0){
+                emptyCells.push([i,j]);
+            }
+        }
+    }
+    return emptyCells;
+};
+
+SudokuGame.prototype.getPossibleValuesForCell = function (grid, row, column, value) {
+    var possibleValues = {
         row: row,
         column: column,
         values: {
-          1: true,
-          2: true,
-          3: true,
-          4: true,
-          5: true,
-          6: true,
-          7: true,
-          8: true,
-          9: true
+            1: true,
+            2: true,
+            3: true,
+            4: true,
+            5: true,
+            6: true,
+            7: true,
+            8: true,
+            9: true
         },
         clash: {row: false, column: false, subgrid: false } 
-      };
-  var valueOfCell = grid[row][column];
-  var i, j;
-  var peerValue;
-  var subGrid = this.whichSubGrid(row, column);
-  value = parseInt(value, 10);
-
-  //check row unit
-  for(i=0; i < grid[row].length; i++){
-    peerValue = grid[row][i]
-    possibleValues.values[peerValue] = false;
-    if(!possibleValues.clash.row){
-      possibleValues.clash.row = peerValue === value ? true : false;
-    }
-  }
-
-  //check column unit
-  for(i=0; i < grid.length; i++){
-    peerValue = grid[i][column];
-    possibleValues.values[peerValue] = false;
-    if(!possibleValues.clash.column){
-      possibleValues.clash.column = peerValue === value ? true : false;
-    }
-  }
-
-  //check inside grid unit
-  for(i=subGrid.startRowIndex; i <= subGrid.endRowIndex; i++){
-    for(j=subGrid.startColumnIndex; j <= subGrid.endColumnIndex; j++){
-      peerValue = grid[i][j];
-      possibleValues.values[peerValue] =  false;
-      if(!possibleValues.clash.subgrid){
-        possibleValues.clash.subgrid = peerValue === value ? true : false;
-      }
-    }
-  }
-
-  delete possibleValues.values[0];
-
-  return possibleValues;
-}
-
-SudokuGame.prototype.whichSubGrid = function(row, column){
-  var subGrid = {};
-  var subGridRow = this.resolveSubGridCoordinate(row);
-  var subGridColumn = this.resolveSubGridCoordinate(column);
-
-  subGrid.coordinates = [subGridRow, subGridColumn];
-  subGrid.endColumnIndex = subGridColumn*3-1;
-  subGrid.startColumnIndex = subGrid.endColumnIndex - 2;
-  subGrid.endRowIndex = subGridRow*3-1;
-  subGrid.startRowIndex = subGrid.endRowIndex - 2;
-
-  return subGrid;
-}
-
-SudokuGame.prototype.resolveSubGridCoordinate = function(rowOrColumn){
-  if(rowOrColumn < 3){
-    return 1;
-  }
-  else if(rowOrColumn < 6){
-    return 2;
-  }
-  else if(rowOrColumn < 9){
-    return 3;
-  }
-}
-
-SudokuGame.prototype.giveHint = function(){
-  var emptyCells = this.getEmptyCells(this.playersGrid);
-  var pickANumber = Math.floor(Math.random()*emptyCells.length);
-  
-  console.log("emptyCells length...");
-  console.log(emptyCells.length);
-  console.log(pickANumber);
-  if(emptyCells.length > pickANumber){
-    var row = emptyCells[pickANumber][0];
-    var column = emptyCells[pickANumber][1];
-
-    return {
-      row: row,
-      column: column,
-      hint: this.solution[row][column] 
     };
-  }
-  else{
-    return {hint: null};
-  }
-}
-;var $sudokuBoard = $("#soduku-board");
+    var valueOfCell = grid[row][column];
+    var i, j;
+    var peerValue;
+    var subGrid = this.whichSubGrid(row, column);
+    value = parseInt(value, 10);
+
+    //check row unit
+    for(i=0; i < grid[row].length; i++){
+        peerValue = grid[row][i];
+        possibleValues.values[peerValue] = false;
+
+        if(!possibleValues.clash.row){
+            possibleValues.clash.row = peerValue === value ? true : false;
+        }
+    }
+
+    //check column unit
+    for(i=0; i < grid.length; i++){
+        peerValue = grid[i][column];
+        possibleValues.values[peerValue] = false;
+
+        if(!possibleValues.clash.column){
+            possibleValues.clash.column = peerValue === value ? true : false;
+        }
+    }
+
+    //check inside grid unit
+    for(i=subGrid.startRowIndex; i <= subGrid.endRowIndex; i++){
+        for(j=subGrid.startColumnIndex; j <= subGrid.endColumnIndex; j++){
+            peerValue = grid[i][j];
+            possibleValues.values[peerValue] =  false;
+
+            if(!possibleValues.clash.subgrid){
+                possibleValues.clash.subgrid = peerValue === value ? true : false;
+            }
+        }
+    }
+
+    delete possibleValues.values[0];
+
+    return possibleValues;
+};
+
+SudokuGame.prototype.whichSubGrid = function (row, column) {
+    var subGrid = {};
+    var subGridRow = this.resolveSubGridCoordinate(row);
+    var subGridColumn = this.resolveSubGridCoordinate(column);
+
+    subGrid.coordinates = [subGridRow, subGridColumn];
+    subGrid.endColumnIndex = subGridColumn*3-1;
+    subGrid.startColumnIndex = subGrid.endColumnIndex - 2;
+    subGrid.endRowIndex = subGridRow*3-1;
+    subGrid.startRowIndex = subGrid.endRowIndex - 2;
+
+    return subGrid;
+};
+
+SudokuGame.prototype.resolveSubGridCoordinate = function (rowOrColumn) {
+    if(rowOrColumn < 3){
+        return 1;
+    }
+    else if(rowOrColumn < 6){
+        return 2;
+    }
+    else if(rowOrColumn < 9){
+        return 3;
+    }
+};
+
+SudokuGame.prototype.giveHint = function () {
+    var emptyCells = this.getEmptyCells(this.playersGrid);
+    var pickANumber = Math.floor(Math.random()*emptyCells.length);
+    var row, column;
+
+    if(emptyCells.length > pickANumber){
+        row = emptyCells[pickANumber][0];
+        column = emptyCells[pickANumber][1];
+
+        return {
+            row: row,
+            column: column,
+            hint: this.solution[row][column] 
+        };
+    }
+    else{
+        return {hint: null};
+    }
+};
+
+;
+var $sudokuBoard = $("#soduku-board");
 var $sudokuRulesBoard = $("#game-rules table");
 var sudoku = new SudokuGame("easy");
-var puzzle;
 var timer = new Timer("#timer-1");
 var medium = "pen";
 var difficulty = "easy";
 var showPossibleValues = false;
 var showClashes = false;
 
-var maintainAspectRatio = function($element){
-  $element.css("height", $element.width());
+
+function saveGame () {
+    var savedGame = {};
+
+    savedGame.sudoku = sudoku;
+    savedGame.timer = timer;
+    savedGame.settings = {
+        medium: medium,
+        difficulty: difficulty,
+        showPossibleValues: showPossibleValues,
+        showClashes: showClashes
+    };
+
+    localStorage.setItem("savedGame", JSON.stringify(savedGame));
 }
 
+function resumeSavedGame(){
+    var storedGame = JSON.parse(localStorage.getItem("savedGame"));
+
+    if(storedGame){
+        sudoku = storedGame.sudoku;
+        sudoku.__proto__ = SudokuGame.prototype;//TODO: do this right
+        timer.stop();
+        timer = storedGame.timer;
+        timer.__proto__ = Timer.prototype;//TODO: do this right
+        medium = storedGame.settings.medium;
+        difficulty = storedGame.settings.difficulty;
+        showPossibleValues = storedGame.settings.showPossibleValues;
+        showClashes = storedGame.settings.showClashes;
+        console.log("resuming saved game...");
+
+        restoreUI();
+
+        return true;
+    }
+    else{
+        //no saved game in local storage
+        return false;
+    }
+}
+
+function restoreUI(){
+    console.log("restoring UI...");
+    drawPuzzleDom(sudoku.playersGrid);
+    disableCells();
+    styleGuessCells(medium);
+    // clearConflictHighlights();
+    markConflicts();
+    timer.refreshTimeDom();
+    if(timer.isStopped){
+        timer.stop();
+    }
+    else{
+        timer.start();
+    }
+    $("#game-settings-options .possible-values").prop("checked", showPossibleValues);
+    $("#game-settings-options .highlight-clashes").prop("checked", showClashes);
+    $("#pallete input[value='"+medium + "']").prop("checked", true);
+    $("#game-details .difficulty").html(difficulty);
+}
+
+var maintainAspectRatio = function($element){
+    $element.css("height", $element.width());
+};
+
 $(document).on("load", (function(){
-  //initializing function calls
-  maintainAspectRatio($sudokuBoard);
-  drawPuzzleDom(sudoku.puzzle);
-  disableCells();
-  timer.start();
+    //initializing function calls
+    maintainAspectRatio($sudokuBoard);
+    drawPuzzleDom(sudoku.puzzle);
+    disableCells();
+    timer.start();
 })());
 
 $(window).resize(function(){
-  maintainAspectRatio($sudokuBoard);
-  maintainAspectRatio($sudokuRulesBoard);
+    maintainAspectRatio($sudokuBoard);
+    maintainAspectRatio($sudokuRulesBoard);
 });
 
 // Widget Event handlers (TODO: consolidate events)
 
 $("#game-rules").on("click", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  switch(target.className){
-    case "game-rules-modal": 
-      console.log("clicked on game-rules-modal");
-      $("#game-rules").hide();
-      break;
-    case "close-rules-modal": 
-      console.log("clicked on close rules modal");
-      $("#game-rules").hide();
-      break;
-    case "play-game":
-      console.log("start a new game");
-      newPuzzle(difficulty);
-      $("#game-rules").hide();
-      break;
-  }
+    var target = event.target ? event.target : event.srcElement;
+    switch(target.className){
+        case "game-rules-modal": 
+            $("#game-rules").hide();
+            break;
+        case "close-rules-modal": 
+            $("#game-rules").hide();
+            break;
+        case "play-game":
+            newPuzzle(difficulty);
+            $("#game-rules").hide();
+            break;
+    }
 });
 
 $(".game-menu li").on("click", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  switch(target.className){
-    case "select-new-puzzle": 
-      $("#game-settings-options").hide();
-      $("#select-puzzle-options").toggle(); 
-      break;
-    case "game-settings": 
-      $("#select-puzzle-options").hide()
-      $("#game-settings-options").toggle();
-      break;
-  }
+    var target = event.target ? event.target : event.srcElement;
+    switch(target.className){
+        case "select-new-puzzle": 
+            $("#game-settings-options").hide();
+            $("#select-puzzle-options").toggle(); 
+            break;
+        case "game-settings": 
+            $("#select-puzzle-options").hide();
+            $("#game-settings-options").toggle();
+            break;
+    }
 });
 
 $("#game-settings-options").on("click", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  // console.log(target);
-  // console.log(target.className);
-  switch(target.className){
-    case "game-rules": 
-      console.log("bring up game rules");
-      $("#game-settings-options").hide();
-      $("#game-rules").show();
-      maintainAspectRatio($sudokuRulesBoard);
-      break;
-    case "possible-values": 
-      showPossibleValues = target.checked;
-      drawPuzzleDom(sudoku.playersGrid);
-      break;
-    case "highlight-clashes":
-      showClashes = target.checked;
-      break;
-  }
+    var target = event.target ? event.target : event.srcElement;
+
+    switch(target.className){
+        case "game-rules": 
+            $("#game-settings-options").hide();
+            $("#game-rules").show();
+            maintainAspectRatio($sudokuRulesBoard);
+            break;
+        case "possible-values": 
+            showPossibleValues = target.checked;
+            drawPuzzleDom(sudoku.playersGrid);
+            break;
+        case "highlight-clashes":
+            showClashes = target.checked;
+            break;
+    }
 });
 
-$("#select-puzzle-options").on("click", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  difficulty = target.value;
-  newPuzzle(difficulty);
-  $(this).hide();
-})
+$("#select-puzzle-options").on("click", function (event) {
+    var target = event.target ? event.target : event.srcElement;
 
-function newPuzzle(selectedDifficulty){
-  sudoku = new SudokuGame(selectedDifficulty);
-  drawPuzzleDom(sudoku.puzzle);
-  disableCells();
-  $("#game-details .difficulty").html(difficulty);
-  timer.reset();
+    difficulty = target.value;
+    newPuzzle(difficulty);
+    $(this).hide();
+});
+
+function newPuzzle (selectedDifficulty) {
+    sudoku = new SudokuGame(selectedDifficulty);
+    drawPuzzleDom(sudoku.puzzle);
+    disableCells();
+    clearConflictHighlights();
+    $("#game-details .difficulty").html(difficulty);
+    timer.reset();
 }
 
-$("#hint").on("click", function(event){
-  var hintInfo = sudoku.giveHint();
-  if(hintInfo.hint){
-    inputCellDom(hintInfo.row, hintInfo.column, hintInfo.hint, "show-hint");
-    sudoku.playerInput(hintInfo.row, hintInfo.column, hintInfo.hint);
-  }
-  drawPuzzleDom(sudoku.playersGrid);
-  // console.log(hintInfo);
-  // console.log(sudoku.print(sudoku.playersGrid));
-})
+$("#hint").on("click", function (event) {
+    var hintInfo = sudoku.giveHint();
 
-$("#timer-1").on("click", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  if(target.className === "toggle"){
-    target.checked ? timer.start() : timer.stop();
-  }
-  else if(target.className === "close-timer"){
-    console.log("close timer clicked");
-    $("#timer-1 .timer").hide();
-    $("#timer-1 .show-timer").show();
-  }
-  else if(target.className === "show-timer"){
-    console.log("show timer clicked");
-    $("#timer-1 .show-timer").hide();
-    $("#timer-1 .timer").show();
-  }
-});
-
-$("#pallete .toggle-select").on("click", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  medium = target.value;
-});
-
-$sudokuBoard.on("focusin", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  $(target).removeClass().addClass(medium);
-});
-
-$sudokuBoard.on("change", function(event){
-  console.log("cell value changed...");
-  var $target = event.target ? $(event.target) : $(event.srcElement);
-  var newCellValue = $target.val();
-  var cell = $target.attr("data-cell").split(",");
-  var row = cell[0];
-  var column = cell[1];
-
-  $target.removeClass().addClass(medium);
-  // console.log(event.target.dataset.cell);
-  //validate value of cell 
-  try {
-    if(showClashes){
-      var possibleValues = sudoku.getPossibleValuesForCell(sudoku.playersGrid, row, column, newCellValue);
-      highlightClash(possibleValues.clash, row, column);
+    if(hintInfo.hint){
+        inputCellDom(hintInfo.row, hintInfo.column, hintInfo.hint, "show-hint");
+        sudoku.playerInput(hintInfo.row, hintInfo.column, hintInfo.hint);
     }
-    sudoku.playerInput(row, column, newCellValue);
-    markConflicts();
-    drawPuzzleDom(sudoku.playersGrid);//causes a required to be added to the changed cell
+    drawPuzzleDom(sudoku.playersGrid);
+});
 
-    if(sudoku.isComplete()){
-      if(sudoku.isSolved()){
-        console.log("puzzle solved");
-        weHaveAWinner();
-      }
-      else{
-        console.log("puzzle not solved..where to notify")
-      }
+$("#timer-1").on("click", function (event) {
+    var target = event.target ? event.target : event.srcElement;
+
+    if(target.className === "toggle"){
+        if(target.checked){
+            timer.start();
+        }
+        else{
+            timer.stop();
+        }
     }
-  }
-  catch(error){
-    var previousCellValue = formatCellValue(cell[0], cell[1]);
-    $target.val(previousCellValue);
-    console.log(error);
-  //   //notify player of invalid entry
-  }
+    else if(target.className === "close-timer"){
+        $("#timer-1 .timer").hide();
+        $("#timer-1 .show-timer").show();
+    }
+    else if(target.className === "show-timer"){
+        $("#timer-1 .show-timer").hide();
+        $("#timer-1 .timer").show();
+    }
+});
+
+$("#pallete .toggle-select").on("click", function (event) {
+    var target = event.target ? event.target : event.srcElement;
+    medium = target.value;
+});
+
+$sudokuBoard.on("focusin", function (event) {
+    var target = event.target ? event.target : event.srcElement;
+    $(target).removeClass().addClass(medium);
+});
+
+$sudokuBoard.on("change", function (event) {
+    var $target = event.target ? $(event.target) : $(event.srcElement);
+    var newCellValue = $target.val();
+    var cell = $target.attr("data-cell").split(",");
+    var row = cell[0];
+    var column = cell[1];
+    var possibleValues;
+    var previousCellValue;
+
+    $target.removeClass().addClass(medium);
+
+    try {
+        if(showClashes){
+          possibleValues = sudoku.getPossibleValuesForCell(sudoku.playersGrid, row, column, newCellValue);
+          highlightClash(possibleValues.clash, row, column);
+        }
+        sudoku.playerInput(row, column, newCellValue);
+        markConflicts();
+        drawPuzzleDom(sudoku.playersGrid);//causes a required to be added to the changed cell
+
+        if(sudoku.isComplete()){
+            if(sudoku.isSolved()){
+                console.log("puzzle solved");
+                weHaveAWinner();
+            }
+        }
+    }
+    catch(error){
+        previousCellValue = formatCellValue(cell[0], cell[1]);
+        $target.val(previousCellValue);
+        console.log(error);
+        //notify player of invalid entry
+    }
 });
 
 function formatCellValue(row, column){
-  var cellValue = sudoku.playersGrid[row][column];
-  cellValue = cellValue === 0 ? " " : cellValue;
-  return cellValue;
+    var cellValue = sudoku.playersGrid[row][column];
+    cellValue = cellValue === 0 ? " " : cellValue;
+
+    return cellValue;
 }
 
 //HTML5 Number input doesn't log validation errors
 $sudokuBoard.on("focusout", function(event){
-  var target = event.target ? event.target : event.srcElement;
-  if(!target.checkValidity()){
-    var cell = target.dataset.cell.split(",");
-    var previousCellValue = formatCellValue(cell[0], cell[1]);
-    $(target).val(previousCellValue);
-    
-    throw {name: "invalidGuess", message: "a number between 1 and 9 is required"};
-  }
-  else{
-    $target = $(target);
-    $target.val() == "" ? $target.removeClass() : null;
-  }
+    var target = event.target ? event.target : event.srcElement;
+    var cell;
+    var previousCellValue;
 
+    if(!target.checkValidity()){
+        cell = target.dataset.cell.split(",");
+        previousCellValue = formatCellValue(cell[0], cell[1]);
+        $(target).val(previousCellValue);
+
+        throw {name: "invalidGuess", message: "a number between 1 and 9 is required"};
+    }
+    else{
+        $target = $(target);
+        if($target.val() === ""){
+            $target.removeClass();
+        }
+    }
 });
 
 // END event handlers
 
 function inputCellDom(row, column, value, className){
-  $("td input").each(function(index, cell){
-    var cellLocation = $(this).attr("data-cell").split(",");
+    $("td input").each(function(index, cell){
+        var cellLocation = $(this).attr("data-cell").split(",");
 
-    if(cellLocation[0] == row && cellLocation[1] == column){
-      $(this).val(value);
-      className ? $(this).removeClass().addClass(className) : null;
-    }
-  });
+        if(cellLocation[0] == row && cellLocation[1] == column){
+            $(this).val(value);
+            if(className){
+                $(this).removeClass().addClass(className);
+            }
+        }
+    });
 }
 
 function drawPuzzleDom(puzzle){
@@ -10846,138 +10912,148 @@ function drawPuzzleDom(puzzle){
     if(value === 0){
       value = " ";
 
-      for(possibleValue in possibleValues.values){
+      for(var possibleValue in possibleValues.values){
         if(possibleValues.values[possibleValue]){
           $(this).next().append(possibleValue);
         }
       }
     }
-
     $(this).val(value);
-    
   });
+}
+
+function styleGuessCells(cellClass){
+    var cellLocation;
+    var row, column;
+    var playerGuesses;
+
+    $("td input").each(function (index, cell) {
+        cellLocation = $(this).attr("data-cell").split(",");
+        row = cellLocation[0];
+        column = cellLocation[1];
+        playerGuesses = sudoku.getPlayersGuesses();
+
+        if(playerGuesses[row][column] !== 0){
+            if(cellClass){
+                $(this).removeClass().addClass(cellClass);
+            }
+            else{
+                $(this).removeClass();
+            }
+        }
+    });
 }
 
 function disableCells(){
-  $("td input").each(function(index, cell){
-    var cellLocation = $(this).attr("data-cell").split(",");
-    var row = cellLocation[0];
-    var column = cellLocation[1];
-    var disabled = true;
+    var cellLocation;
+    var row, column;
+    var disabled;
 
-    if(sudoku.puzzle[row][column] == 0){
-      disabled = false;
-    }
+    $("td input").each(function(index, cell){
+        cellLocation = $(this).attr("data-cell").split(",");
+        row = cellLocation[0];
+        column = cellLocation[1];
+        disabled = true;
 
-    $(this).removeClass();
-    // $(this).parent().parent().removeClass();
-    $(this).attr("disabled", disabled);
-  });
+        if(sudoku.puzzle[row][column] === 0){
+            disabled = false;
+        }
+        // $(this).parent().parent().removeClass();
+        $(this).attr("disabled", disabled);
+        $(this).removeClass();
+    });
 }
 
 function markConflicts(){
-  var guessesGrid = sudoku.getPlayersGuesses();
-
-  $("td input").each(function(index, cell){
-    var cellLocation = $(this).attr("data-cell").split(",");
-    var row = cellLocation[0];
-    var column = cellLocation[1];
+    var guessesGrid = sudoku.getPlayersGuesses();
+    var cellLocation;
+    var row, column;
     var conflicts;
-    var value = guessesGrid[row][column];
+    var value;
 
-    //REFACTOR!
-    if(value !== 0){
-      conflicts = sudoku.getPossibleValuesForCell(sudoku.playersGrid, row, column, value).clash;
+    $("td input").each(function(index, cell){
+        cellLocation = $(this).attr("data-cell").split(",");
+        row = cellLocation[0];
+        column = cellLocation[1];
+        value = guessesGrid[row][column];
 
-      if(conflicts.row || conflicts.column || conflicts.subgrid){
-        $(this).next().removeClass().addClass("hint-overlay conflict");
-      }
-      else{
+        //REFACTOR!
+        if(value !== 0){
+            conflicts = sudoku.getPossibleValuesForCell(sudoku.playersGrid, row, column, value).clash;
+
+            if(conflicts.row || conflicts.column || conflicts.subgrid){
+                $(this).next().removeClass().addClass("hint-overlay conflict");
+            }
+            else{
+                $(this).next().removeClass().addClass("hint-overlay");
+            }
+        }
+        else{
+          $(this).next().removeClass().addClass("hint-overlay");
+        }
+    });
+}
+
+function highlightClash(typeOfClash, row, column){ 
+    var subgrid = sudoku.whichSubGrid(row, column);
+    var cellLocation;
+    var currentRow, currentColumn;
+    var $tdSudokuSquare;
+
+    $("td input").each(function(index, cell){
+        cellLocation = $(this).attr("data-cell").split(",");
+        currentRow = cellLocation[0];
+        currentColumn = cellLocation[1];
+        $tdSudokuSquare = $(this).parent().parent();
+
+        $tdSudokuSquare.removeClass();
+
+        if(typeOfClash.row && row === currentRow){
+            $tdSudokuSquare.addClass("clash");
+        }
+
+        if(typeOfClash.column && column === currentColumn){
+            $tdSudokuSquare.addClass("clash");
+        }
+
+        if(typeOfClash.subgrid && currentRow>= subgrid.startRowIndex && currentRow <= subgrid.endRowIndex &&
+            currentColumn >= subgrid.startColumnIndex && currentColumn <= subgrid.endColumnIndex){
+            $tdSudokuSquare.addClass("clash");
+        }
+    });
+}
+
+function clearConflictHighlights(){
+    $("td input").each(function(index, cell){
+        $(this).parent().parent().removeClass();
         $(this).next().removeClass().addClass("hint-overlay");
-      }
-    }
-    else{
-      $(this).next().removeClass().addClass("hint-overlay");
-    }
-  });
+    });
 }
 
-function highlightClash(typeOfClash, row, column){
-
-  var subgrid = sudoku.whichSubGrid(row, column);
-  
-  $("td input").each(function(index, cell){
-    var cellLocation = $(this).attr("data-cell").split(",");
-    var currentRow = cellLocation[0];
-    var currentColumn = cellLocation[1];
-    var $tdSudokuSquare = $(this).parent().parent();
-
-    $tdSudokuSquare.removeClass();
-
-    if(typeOfClash.row && row === currentRow){
-      $tdSudokuSquare.addClass("clash");
-    }
-
-    if(typeOfClash.column && column === currentColumn){
-      $tdSudokuSquare.addClass("clash");
-    }
-
-    if(typeOfClash.subgrid && currentRow>= subgrid.startRowIndex && currentRow <= subgrid.endRowIndex 
-       && currentColumn >= subgrid.startColumnIndex && currentColumn <= subgrid.endColumnIndex){
-       $tdSudokuSquare.addClass("clash");
-    }
-
-  });
-}
-
+//REFACTOR - REDESIGN!
 function weHaveAWinner(){
-  var message = "GOOD JOB!";
-  var colors = [
-        "#c21617",
-        "#d42819",
-        "#eb401d",
-        "#fd521f",
-        "#fe7516",
-        "#fea309",
-        "#ffc600",
-        "#b5b31a",
-        "#549b3c",
-        "#0a8856",
-        "#067e6a",
-        "#02747f",
-        "#006f89",
-        "#305f83",
-        "#704b7b",
-        "#a03b75",
-        "#9a3659",
-        "#932f33",
-        "#8d2a17",
-        "#702819",
-        "#4a261c",
-        "#2d241e",
-        "#4b4540"
-  ];
-var colors2 = [
-  "rgba(194,22,23,",
-  "rgba(212,40,25,",
-  "rgba(235,64,29,",
-  "rgba(253,82,31,",
-  "rgba(254,117,22,",
-  "rgba(254,163,9,",
-  "rgba(255,198,0,",
-  "rgba(181,179,26,",
-  "rgba(84,155,60,",
-  "rgba(10,136,86,",
-  "rgba(6,126,106,",
-  "rgba(2,116,127,",
-  "rgba(0,111,137,",
-  "rgba(48,95,131,",
-  "rgba(112,75,123,",
-  "rgba(160,59,117,",
-  "rgba(154,54,89,"
-  ];
+    var message = "GOOD JOB!";
+    var colors2 = [
+    "rgba(194,22,23,",
+    "rgba(212,40,25,",
+    "rgba(235,64,29,",
+    "rgba(253,82,31,",
+    "rgba(254,117,22,",
+    "rgba(254,163,9,",
+    "rgba(255,198,0,",
+    "rgba(181,179,26,",
+    "rgba(84,155,60,",
+    "rgba(10,136,86,",
+    "rgba(6,126,106,",
+    "rgba(2,116,127,",
+    "rgba(0,111,137,",
+    "rgba(48,95,131,",
+    "rgba(112,75,123,",
+    "rgba(160,59,117,",
+    "rgba(154,54,89,"
+    ];
 
-  // $("td input").each(function(index, cell){
+    // $("td input").each(function(index, cell){
     // var red = Math.round(Math.random()*255);
     // var green = Math.round(Math.random()*255);
     // var blue = Math.round(Math.random()*255);
@@ -10985,38 +11061,43 @@ var colors2 = [
     // var rgba = "rgba(" + red + "," + green + "," + blue + "," + alpha + ")";
     var allDone = false;
     var countdown = 1000;
+    var visitCount;
+    var visited = {};
+    var cellNumber;
+    var $thisCell;
+
     while(!allDone && countdown > 0){
-        var visitCount = 0;
-        var visited = {};
-        var cellNumber = Math.round(Math.random()*81);
+        visitCount = 0;
+        cellNumber = Math.round(Math.random()*81);
         visited[cellNumber] = true;
-        var thisCell = $("td input").eq(cellNumber);
+        $thisCell = $("td input").eq(cellNumber);
 
         var color = colors2[Math.floor(colors2.length*Math.random())];
         color += 0.8 + ")";//Math.random() + ")";
         // console.log(color);
         // $(this).attr("disabled", true).val("");
-        thisCell.attr("disabled", true).val("");
+        $thisCell.attr("disabled", true).val("");
         // var that = this;
         setTimeout((function(cell, index, cellColor){
-          // $(that).parent().addClass("win");
-          // $(that).parent().append("<h1>" + message[index%9] + "</h1>");
-          // $(that).parent().css({"background-color": color});
-          return function(){
-            cell.parent().removeClass("win").addClass("win");
-            cell.parent().append("<h1>" + message[index%9] + "</h1>");
-            cell.parent().css({"background-color": cellColor});
-          }
-        })(thisCell, cellNumber, color), 500);
-      for(var i=0; i<81; i++){
-        if(visited[i]){
-          visitCount += 1;
+            // $(that).parent().addClass("win");
+            // $(that).parent().append("<h1>" + message[index%9] + "</h1>");
+            // $(that).parent().css({"background-color": color});
+            return function(){
+                cell.parent().removeClass("win").addClass("win");
+                cell.parent().append("<h1>" + message[index%9] + "</h1>");
+                cell.parent().css({"background-color": cellColor});
+            };
+        })($thisCell, cellNumber, color), 500);
+
+        for(var i=0; i<81; i++){
+            if(visited[i]){
+                visitCount += 1;
+            }
         }
-      }
-      if(visitCount === 81){
-        allDone = true;
-      }
-      countdown -= 1;
+        if(visitCount === 81){
+            allDone = true;
+        }
+        countdown -= 1;
     }
   // });
 }

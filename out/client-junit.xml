@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite>
+<testcase classname="js.Sudoku" name="Sudoku:7:1">
+  <failure message="Expected 'function' at column 5, not column 1." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:9:5">
+  <failure message="Expected 'this' at column 9, not column 5." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:10:5">
+  <failure message="Expected 'this' at column 9, not column 5." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:11:5">
+  <failure message="Expected 'this' at column 9, not column 5." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:12:5">
+  <failure message="Expected 'this' at column 9, not column 5." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:13:5">
+  <failure message="Expected 'this' at column 9, not column 5." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:14:1">
+  <failure message="Expected '}' at column 5, not column 1." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:16:1">
+  <failure message="Expected 'SudokuGame' at column 5, not column 1." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:18:5">
+  <failure message="Expected 'var' at column 9, not column 5." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:30:5">
+  <failure message="Expected 'return' at column 9, not column 5." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:31:1">
+  <failure message="Expected '}' at column 5, not column 1." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:33:1">
+  <failure message="Unexpected 'SudokuGame'." />
+</testcase>
+<testcase classname="js.Sudoku" name="Sudoku:33:1">
+  <failure message="Stopping. (12% scanned)." />
+</testcase>
+  </testsuite>
+</testsuites>

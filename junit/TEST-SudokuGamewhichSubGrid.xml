@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+
+  <testsuite name="SudokuGame whichSubGrid" errors="0" tests="2" failures="0" time="0.002" timestamp="Tue Jul 08 2014 20:15:49 GMT-0700 (PDT)">
+    
+      <testcase assertions="0" classname="SudokuGame whichSubGrid" name="should return coordintes of 1, 1 for a row and column of 2, 2 in the larger gridwith start and end indices for the larger grid" time="0.001">
+        
+      </testcase>
+    
+      <testcase assertions="0" classname="SudokuGame whichSubGrid" name="should return coordintes of 3, 1 for a row and column of 7, 2 in the larger gridwith start and end indices for the larger grid" time="0">
+        
+      </testcase>
+    
+  </testsuite>
+
+</testsuites>

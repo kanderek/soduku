@@ -52,7 +52,7 @@ describe("Timer", function(){
 		it("should stop the timer", function(){
 			timer.stop();
 			expect(timer.isStopped).toBe(true);
-		})
+		});
 	});
 
 	describe("timer reset", function(){
@@ -60,6 +60,6 @@ describe("Timer", function(){
 		it("should reset time passed to zero", function(){
 			timer.reset();
 			expect(timer.timePassed).toEqual(0);
-		})
+		});
 	});
 });
